@@ -9,6 +9,7 @@
 - `tools/cover.py`: ردیابی و پوشاندن تابلو یا چهره خراب در فریم‌ها.
 - `reference/hermes/` و `reference/paul/`: دو لندینگ قبلی، فقط کد، به‌عنوان مرجع سطح ظاهر. مسیرهای داخلشان `../shared/` است.
 - `LESSONS.md`: روال کار و درس‌های پروژه قبلی.
+- `.claude/skills/`: اسکیل‌های طراحی: web-design-kit (نقشه راه)، ui-ux-pro-max (MIT)، taste-skill (MIT)، frontend-design (Apache 2.0)، emil-design-eng (MIT) و impeccable (Apache 2.0). فایل مجوز هر کدام در پوشه خودش است.
 
 ## ساختار هر لندینگ
 ```

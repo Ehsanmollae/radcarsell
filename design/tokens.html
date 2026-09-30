@@ -4,280 +4,324 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
-  <title>راد کارسل: نمونه رنگ و فونت</title>
+  <title>راد کارسل: نمونه رنگ و فونت، نسخه ۲</title>
   <link rel="stylesheet" href="../shared/css/base.css">
   <style>
-    /* Rad Carsell, "from port to plate": night asphalt, container steel, port-signal amber, bill-of-lading paper. */
+    /* Rad Carsell v2, "showroom after dark": piano-black lacquer, platinum chrome, one warm metal accent.
+       The accent is switchable (?accent=copper | red | platinum) only on this sample page. */
     :root {
-      --bg: #0e0f11;          /* night asphalt */
-      --steel: #3a3f45;       /* container steel */
-      --steel-hi: #555b62;
-      --steel-lo: #24282c;
-      --amber: #ffb000;       /* port signal amber: the only accent */
-      --amber-hi: #ffc848;
-      --amber-lo: #d99400;
-      --amber-ink: #8a5a00;   /* amber as ink on paper (stamps, rules) */
-      --paper: #ece6d8;       /* bill of lading */
-      --paper-lo: #ddd5c3;
-      --ink: #ece6d8;         /* text on dark = the same paper tone */
-      --ink-dark: #17181b;    /* text on paper */
-      --muted: #9ea1a6;
-      --hair: rgba(236, 230, 216, 0.12);
-      --accent: var(--amber);
+      --bg: #09090a;             /* piano black */
+      --lacquer: #121214;        /* raised surfaces */
+      --lacquer-hi: #1b1b1e;
+      --platinum: #dcdde0;       /* text and chrome */
+      --platinum-lo: #8d9096;
+      --muted: #8f9197;
+      --hair: rgba(220, 221, 224, 0.12);
+      --hair-strong: rgba(220, 221, 224, 0.24);
+      --accent: #c8875a;         /* copper */
+      --accent-hi: #e3a980;
+      --accent-lo: #9a5d35;
+      --accent-glow: rgba(200, 135, 90, 0.45);
+      --leather: #2a1a12;        /* cognac-black leather for inventory tags */
+      --leather-hi: #3a2519;
       --font-display: "Vazirmatn", system-ui, sans-serif;
-      --font-latin: "Big Shoulders Stencil", "Vazirmatn", sans-serif;
-      --r-surface: 6px;       /* cards, panels, inputs */
-      --r-control: 999px;     /* buttons, tabs, chips */
+      --font-latin: "Syncopate", "Vazirmatn", sans-serif;
+      --r-surface: 4px;          /* cards, panels, inputs */
+      --r-control: 999px;        /* buttons, tabs, chips */
       --spring: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    body { font-weight: 400; }
-    .wrap { width: min(1180px, 100% - 2 * var(--gutter)); margin-inline: auto; }
-    header.top { padding: 48px 0 24px; border-bottom: 1px solid var(--hair); }
-    .kicker { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; direction: ltr; text-align: right; }
-    h1.title { font-family: var(--font-display); font-weight: 900; font-size: clamp(44px, 9vw, 104px); line-height: 1; margin: 12px 0 0; word-spacing: -0.06em; }
-    .intro { color: var(--muted); max-width: 60ch; margin: 14px 0 0; }
-    section.block { padding: 56px 0; border-bottom: 1px solid var(--hair); }
-    .block > .wrap > h2 { font-family: var(--font-display); font-weight: 800; font-size: 26px; margin: 0 0 6px; }
-    .note { color: var(--muted); font-size: 14px; margin: 0 0 28px; max-width: 70ch; }
+    :root[data-accent="red"] { --accent: #c4162a; --accent-hi: #e2475a; --accent-lo: #8e0d1d; --accent-glow: rgba(196, 22, 42, 0.45); }
+    :root[data-accent="platinum"] { --accent: #b9bcc2; --accent-hi: #eceef1; --accent-lo: #7e8187; --accent-glow: rgba(236, 238, 241, 0.3); }
 
-    /* ---- swatches ---- */
-    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-    .sw { border-radius: var(--r-surface); overflow: hidden; box-shadow: inset 0 0 0 1px var(--hair); }
-    .sw-chip { height: 110px; }
-    .sw-meta { padding: 12px 14px; display: grid; gap: 2px; background: #131417; }
-    .sw-meta b { font-weight: 700; font-size: 15px; }
-    .sw-meta code { font-family: var(--font-mono); font-size: 12px; color: var(--muted); direction: ltr; text-align: right; }
+    body { font-weight: 300; color: var(--platinum); background: var(--bg); }
+    .wrap { width: min(1240px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+    .latin { font-family: var(--font-latin); direction: ltr; text-transform: uppercase; }
 
-    /* ---- type ---- */
-    .type-grid { display: grid; gap: 34px; }
-    .spec { display: grid; gap: 8px; }
-    .spec small { font-family: var(--font-mono); font-size: 11px; color: var(--muted); direction: ltr; text-align: right; }
-    .t-display { font-family: var(--font-display); font-weight: 900; font-size: clamp(52px, 10vw, 128px); line-height: 0.95; word-spacing: -0.08em; margin: 0; }
-    .t-display em { font-style: normal; color: var(--amber); }
-    .t-h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; margin: 0; }
-    .t-latin { font-family: var(--font-latin); font-weight: 800; font-size: clamp(56px, 11vw, 140px); line-height: 0.85; letter-spacing: 0.02em; margin: 0; direction: ltr; text-align: right; }
-    .t-latin span { color: var(--amber); }
-    .t-body { font-size: 17px; line-height: 1.9; max-width: 56ch; margin: 0; color: #d6d1c5; }
-    .t-mono { font-family: var(--font-mono); font-size: 15px; margin: 0; direction: ltr; text-align: right; color: var(--amber-hi); letter-spacing: 0.04em; }
+    /* ---- hero mock: closed container doors, a warm seam of light ---- */
+    .hero { position: relative; min-height: 100dvh; overflow: hidden; display: grid; align-items: end; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-door {
+      position: absolute; top: 0; bottom: 0; width: 50%;
+      background:
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 38px, rgba(0, 0, 0, 0.35) 38px 40px, transparent 40px 58px),
+        linear-gradient(180deg, #1c1d20 0%, #131416 55%, #0b0b0c 100%);
+    }
+    .hero-door.l { left: 0; transform: translateX(-2.2%); }
+    .hero-door.r { right: 0; transform: translateX(2.2%); }
+    .hero-door::after { content: ""; position: absolute; top: 12%; bottom: 14%; width: 3px; border-radius: 2px; background: linear-gradient(180deg, #5a5d63, #2a2b2f); }
+    .hero-door.l::after { right: 16%; }
+    .hero-door.r::after { left: 16%; }
+    .hero-seam {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 4.4%; transform: translateX(-50%);
+      background: radial-gradient(40% 60% at 50% 62%, var(--accent-hi), var(--accent) 35%, var(--accent-lo) 60%, transparent 100%);
+      filter: blur(6px); opacity: 0.9;
+    }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(38% 48% at 50% 60%, var(--accent-glow), transparent 70%),
+        linear-gradient(180deg, rgba(9, 9, 10, 0.2), transparent 30%, rgba(9, 9, 10, 0.55) 70%, var(--bg));
+    }
+    .site-header { background: linear-gradient(180deg, rgba(9, 9, 10, 0.7), transparent); }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+      font-family: var(--font-latin); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; direction: ltr;
+      color: var(--platinum); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      background: radial-gradient(80% 80% at 30% 20%, #26262a, #0f0f11);
+    }
+    .brand-word { font-family: var(--font-latin); font-size: 13px; letter-spacing: 0.42em; direction: ltr; }
+    .site-header nav a { font-weight: 400; opacity: 0.7; }
+    .hero-copy { position: relative; padding: 0 0 clamp(56px, 10vh, 110px); }
+    .hero-kicker { font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.5em; color: var(--platinum-lo); direction: ltr; text-align: right; margin: 0 -0.5em 22px 0; }
+    .hero-title { font-family: var(--font-display); font-weight: 200; font-size: clamp(60px, 11vw, 176px); line-height: 0.98; margin: 0; letter-spacing: 0; }
+    .hero-title b { font-weight: 600; }
+    .hero-sub { margin: 26px 0 0; max-width: 38ch; font-size: clamp(16px, 1.3vw, 19px); color: #b9bbc0; line-height: 1.9; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 
-    /* ---- buttons: amber signal bar, lit top edge, sheen, icon in its own ring ---- */
-    .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    /* ---- buttons: platinum chrome pill, sheen, icon in a ring ---- */
     .btn {
       position: relative; isolation: isolate; overflow: hidden;
-      gap: 14px; padding: 8px 24px; min-height: 52px; border-radius: var(--r-control);
-      background: linear-gradient(180deg, var(--amber-hi) 0%, var(--amber) 55%, var(--amber-lo) 100%);
-      color: #17130a; font-weight: 700;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(90, 55, 0, 0.3), 0 14px 32px -16px rgba(255, 176, 0, 0.65);
-      transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring);
+      gap: 16px; padding: 8px 28px; min-height: 54px; border-radius: var(--r-control);
+      background: linear-gradient(180deg, #f4f5f7 0%, #d4d6da 48%, #b3b6bc 52%, #d9dbdf 100%);
+      color: #0c0c0e; font-weight: 600; font-size: 15px;
+      box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 18px 40px -20px rgba(220, 221, 224, 0.45);
+      transition: transform 0.5s var(--spring), box-shadow 0.5s var(--spring);
     }
     .btn::after {
       content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-      background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
-      transform: translateX(120%); transition: transform 0.9s var(--spring);
+      background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.85) 50%, transparent 68%);
+      transform: translateX(120%); transition: transform 1s var(--spring);
     }
     .btn:hover { transform: translateY(-2px); }
     .btn:hover::after { transform: translateX(-120%); }
     .btn:active { transform: translateY(0) scale(0.97); }
     .btn:has(.btn-icon) { padding-inline-end: 7px; }
-    .btn-icon {
-      display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(23, 19, 10, 0.12); box-shadow: inset 0 0 0 1px rgba(23, 19, 10, 0.16);
-      transition: transform 0.45s var(--spring);
-    }
-    .btn-icon svg { width: 18px; height: 18px; }
+    .btn-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #0c0c0e; color: var(--accent-hi); transition: transform 0.5s var(--spring); }
+    .btn-icon svg { width: 17px; height: 17px; }
     .btn:hover .btn-icon { transform: translateX(-3px); }
     .btn.ghost {
-      background: rgba(58, 63, 69, 0.35); color: var(--ink);
-      box-shadow: inset 0 0 0 1px rgba(255, 176, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      background: rgba(9, 9, 10, 0.35); color: var(--platinum);
+      box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
     }
-    .btn.ghost::after { background: linear-gradient(105deg, transparent 30%, rgba(255, 176, 0, 0.22) 50%, transparent 70%); }
-    .btn.ghost .btn-icon { background: rgba(255, 176, 0, 0.12); box-shadow: inset 0 0 0 1px rgba(255, 176, 0, 0.3); color: var(--amber-hi); }
+    .btn.ghost::after { background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.14) 50%, transparent 68%); }
+    .btn.ghost .btn-icon { background: transparent; box-shadow: inset 0 0 0 1px var(--hair-strong); color: var(--platinum); }
 
-    .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: var(--r-control); background: rgba(58, 63, 69, 0.35); box-shadow: inset 0 0 0 1px var(--hair); }
-    .tabs button { border: 0; background: none; cursor: pointer; padding: 10px 20px; border-radius: var(--r-control); color: var(--muted); font-size: 15px; white-space: nowrap; }
-    .tabs button[aria-selected="true"] { background: linear-gradient(180deg, var(--amber-hi), var(--amber) 60%, var(--amber-lo)); color: #17130a; font-weight: 700; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+    /* ---- sample page sections ---- */
+    section.block { padding: clamp(72px, 10vw, 128px) 0; border-top: 1px solid var(--hair); }
+    .block-title { font-family: var(--font-display); font-weight: 300; font-size: clamp(30px, 3.6vw, 48px); margin: 0 0 8px; }
+    .note { color: var(--muted); font-size: 14px; margin: 0 0 40px; max-width: 64ch; line-height: 1.9; }
 
-    /* ---- double frame: steel tray + paper plate (bill of lading) ---- */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
+    .sw { background: var(--bg); padding: 14px; display: grid; gap: 12px; }
+    .sw-chip { height: 120px; border-radius: 2px; }
+    .sw b { font-weight: 500; font-size: 15px; }
+    .sw code { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.2em; color: var(--muted); direction: ltr; text-align: right; }
+    .sw div.m { display: grid; gap: 4px; }
+
+    .type-grid { display: grid; gap: 56px; }
+    .spec { display: grid; gap: 12px; }
+    .spec small { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.3em; color: var(--muted); direction: ltr; text-align: right; }
+    .t-display { font-weight: 200; font-size: clamp(56px, 9vw, 140px); line-height: 1; margin: 0; }
+    .t-display b { font-weight: 600; }
+    .t-h2 { font-weight: 300; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.15; margin: 0; }
+    .t-latin {
+      font-family: var(--font-latin); font-weight: 400; font-size: clamp(26px, 5.4vw, 76px); letter-spacing: 0.32em; margin: 0; direction: ltr; text-align: right;
+      background: linear-gradient(180deg, #ffffff 0%, #c9cbd0 45%, #7f828a 52%, #d8dade 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .t-body { font-weight: 300; font-size: 18px; line-height: 2; max-width: 52ch; margin: 0; color: #c6c8cc; }
+    .t-small { font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.34em; color: var(--accent-hi); margin: 0; direction: ltr; text-align: right; }
+
+    .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: var(--r-control); box-shadow: inset 0 0 0 1px var(--hair-strong); }
+    .tabs button { border: 0; background: none; cursor: pointer; padding: 10px 22px; border-radius: var(--r-control); color: var(--muted); font-size: 15px; white-space: nowrap; }
+    .tabs button[aria-selected="true"] { background: linear-gradient(180deg, #f4f5f7, #cfd1d5); color: #0c0c0e; font-weight: 600; box-shadow: inset 0 1px 0 #fff; }
+
+    /* ---- double frame: brushed-metal tray + lacquer plate, the "manifest" ---- */
     .shell {
-      padding: 6px; border-radius: calc(var(--r-surface) + 6px);
-      background: linear-gradient(180deg, rgba(85, 91, 98, 0.45), rgba(36, 40, 44, 0.45));
-      box-shadow: inset 0 0 0 1px rgba(236, 230, 216, 0.14), 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+      padding: 1px; border-radius: 10px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.16));
+      box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
     }
-    .bol {
-      position: relative; border-radius: var(--r-surface); padding: 26px clamp(20px, 3vw, 34px) 24px;
-      background: var(--paper); color: var(--ink-dark);
-      background-image:
-        linear-gradient(rgba(23, 24, 27, 0.06) 1px, transparent 1px);
-      background-size: 100% 34px; background-position: 0 70px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    .shell-inner { padding: 7px; border-radius: 9px; background: #0d0d0f; }
+    .manifest {
+      position: relative; border-radius: 6px; padding: clamp(26px, 3.4vw, 42px);
+      background: radial-gradient(120% 80% at 100% 0%, rgba(255, 255, 255, 0.05), transparent 55%), linear-gradient(180deg, var(--lacquer-hi), var(--lacquer));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
     }
-    .bol-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 14px; border-bottom: 2px solid var(--ink-dark); }
-    .bol-head b { font-weight: 900; font-size: 22px; }
-    .bol-no { font-family: var(--font-mono); font-size: 12px; direction: ltr; color: #4b4d52; }
-    .bol-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; margin: 6px 0 0; }
-    .bol-fields div { padding: 8px 0; border-bottom: 1px dashed rgba(23, 24, 27, 0.25); }
-    .bol-fields dt { font-size: 12px; color: #5b5d62; }
-    .bol-fields dd { margin: 0; font-weight: 700; }
-    .barcode {
-      height: 34px; margin-top: 18px; opacity: 0.85;
-      background: repeating-linear-gradient(90deg, var(--ink-dark) 0 2px, transparent 2px 4px, var(--ink-dark) 4px 5px, transparent 5px 9px, var(--ink-dark) 9px 12px, transparent 12px 14px, var(--ink-dark) 14px 15px, transparent 15px 19px);
-    }
-    .ink-stamp {
-      position: absolute; left: 22px; bottom: 58px; transform: rotate(-9deg);
-      padding: 6px 14px; border: 2.5px solid var(--amber-ink); border-radius: 4px; outline: 1px solid var(--amber-ink); outline-offset: 3px;
-      color: var(--amber-ink); font-weight: 900; font-size: 18px; opacity: 0.85; mix-blend-mode: multiply;
+    .manifest-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--hair-strong); }
+    .manifest-head b { font-weight: 300; font-size: 26px; }
+    .manifest-head span { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.3em; color: var(--muted); direction: ltr; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin: 8px 0 0; }
+    .fields div { padding: 14px 0; border-bottom: 1px solid var(--hair); }
+    .fields dt { font-size: 12px; color: var(--muted); }
+    .fields dd { margin: 4px 0 0; font-weight: 400; font-size: 17px; }
+    .barcode { height: 26px; margin-top: 26px; opacity: 0.35; background: repeating-linear-gradient(90deg, var(--platinum) 0 1px, transparent 1px 4px, var(--platinum) 4px 6px, transparent 6px 8px, var(--platinum) 8px 9px, transparent 9px 13px); }
+    .seal { /* embossed foil seal */
+      position: absolute; left: clamp(20px, 3vw, 36px); bottom: 58px; width: 78px; height: 78px; border-radius: 50%;
+      display: grid; place-items: center; transform: rotate(-10deg);
+      font-family: var(--font-latin); font-weight: 700; font-size: 15px; letter-spacing: 0.08em; direction: ltr;
+      color: var(--accent-hi);
+      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.18), transparent 45%), radial-gradient(circle, var(--accent-lo), #1a1a1c 72%);
+      box-shadow: inset 0 0 0 1.5px var(--accent), inset 0 0 0 6px rgba(0, 0, 0, 0.35), inset 0 0 0 7px var(--accent-lo), 0 8px 20px -8px rgba(0, 0, 0, 0.8);
     }
 
-    /* ---- luggage tag inventory card ---- */
-    .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 300px)); gap: 22px; }
-    @media (max-width: 640px) { .tags { grid-template-columns: minmax(0, 320px); justify-content: center; } }
-    .tag { position: relative; padding-top: 34px; }
-    .tag-string { position: absolute; top: 0; left: 50%; width: 60px; height: 44px; margin-left: -30px; color: rgba(236, 230, 216, 0.5); }
+    /* ---- inventory: stitched leather hang tag with a chrome eyelet ---- */
+    .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 300px)); gap: 28px; }
+    .tag { position: relative; padding-top: 40px; }
+    .tag-cord { position: absolute; top: 0; left: 50%; width: 64px; height: 50px; margin-left: -32px; color: #6d7076; }
     .tag-body {
-      position: relative; background: var(--paper); color: var(--ink-dark); padding: 44px 16px 18px;
-      clip-path: polygon(22% 0, 78% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
-      border-radius: 0 0 var(--r-surface) var(--r-surface);
+      position: relative; padding: 52px 16px 20px; color: var(--platinum);
+      clip-path: polygon(24% 0, 76% 0, 100% 8%, 100% 100%, 0 100%, 0 8%);
+      background:
+        radial-gradient(140% 60% at 50% 0%, rgba(255, 255, 255, 0.07), transparent 60%),
+        repeating-radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 3px),
+        linear-gradient(180deg, var(--leather-hi), var(--leather));
+      border-radius: 0 0 8px 8px;
     }
-    .tag-body::before { /* string hole with a metal eyelet */
-      content: ""; position: absolute; top: 12px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%;
-      background: var(--bg); box-shadow: 0 0 0 4px #b9b2a2, 0 0 0 5px rgba(23, 24, 27, 0.3);
+    .tag-body::after { /* saddle stitching */
+      content: ""; position: absolute; inset: 7px; pointer-events: none;
+      clip-path: polygon(24% 0, 76% 0, 100% 8%, 100% 100%, 0 100%, 0 8%);
+      border: 1px dashed rgba(227, 169, 128, 0.45); border-radius: 0 0 5px 5px;
+    }
+    .tag-body::before { /* chrome eyelet */
+      content: ""; position: absolute; top: 14px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%;
+      background: var(--bg); box-shadow: 0 0 0 4px #c9cbd0, 0 0 0 5px #6d7076, 0 2px 4px 5px rgba(0, 0, 0, 0.5);
     }
     .tag-photo {
-      aspect-ratio: 4 / 3; border-radius: 4px; display: grid; place-items: center; text-align: center;
-      background: repeating-linear-gradient(135deg, #cfc7b4 0 10px, #d8d0bd 10px 20px);
-      color: #5b5d62; font-size: 13px; position: relative;
+      aspect-ratio: 4 / 3; border-radius: 3px; display: grid; place-items: center; text-align: center; position: relative;
+      background: radial-gradient(70% 60% at 50% 70%, rgba(255, 255, 255, 0.06), transparent), #0e0e10;
+      color: var(--muted); font-size: 13px; box-shadow: inset 0 0 0 1px var(--hair);
     }
     .tag-photo .sample {
-      position: absolute; top: 12px; right: 10px; transform: rotate(8deg);
-      border: 2px solid var(--amber-ink); color: var(--amber-ink); padding: 2px 10px; border-radius: 3px; font-weight: 900; font-size: 15px;
-      background: rgba(236, 230, 216, 0.6);
+      position: absolute; top: 12px; right: 12px; transform: rotate(6deg);
+      padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--accent-hi);
+      box-shadow: inset 0 0 0 1px var(--accent); background: rgba(9, 9, 10, 0.6);
     }
-    .tag h3 { margin: 14px 0 2px; font-size: 20px; font-weight: 900; }
-    .tag .meta { display: flex; justify-content: space-between; font-size: 13px; color: #5b5d62; }
-    .tag .meta code { font-family: var(--font-mono); direction: ltr; }
-    .tag-perf { margin: 14px -16px 0; border-top: 2px dashed rgba(23, 24, 27, 0.3); }
+    .tag h3 { margin: 18px 0 2px; font-size: 21px; font-weight: 400; }
+    .tag .meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #b3a79b; }
+    .tag .meta code { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.25em; direction: ltr; }
 
-    /* ---- shipment tracker ---- */
-    .tracker { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; padding: 18px 0 4px; }
-    .tracker::before { content: ""; position: absolute; top: 25px; right: 8%; left: 8%; height: 2px; background: var(--steel); }
-    .tracker::after { content: ""; position: absolute; top: 25px; right: 8%; width: calc(84% * 0.5); height: 2px; background: var(--amber); }
-    .step { position: relative; display: grid; justify-items: center; gap: 10px; font-size: 13px; color: var(--muted); text-align: center; }
-    .step i { width: 16px; height: 16px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--steel-hi); position: relative; z-index: 1; }
-    .step.done { color: var(--ink); }
-    .step.done i { background: var(--amber); box-shadow: none; }
-    .step.now { color: var(--amber-hi); font-weight: 700; }
-    .step.now i { background: var(--bg); box-shadow: inset 0 0 0 2px var(--amber), 0 0 0 5px rgba(255, 176, 0, 0.18); }
-    .tracker-mobile { margin-top: 26px; height: 4px; border-radius: 2px; background: var(--steel-lo); position: relative; overflow: hidden; }
-    .tracker-mobile span { position: absolute; inset: 0 0 0 auto; width: 50%; background: var(--amber); }
+    /* ---- shipment tracker: hairline route, lit stations ---- */
+    .tracker { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; padding-top: 6px; }
+    .tracker::before, .tracker::after { content: ""; position: absolute; top: 12px; height: 1px; }
+    .tracker::before { right: 8.33%; left: 8.33%; background: var(--hair-strong); }
+    .tracker::after { right: 8.33%; width: calc(83.33% * 0.6); background: linear-gradient(to left, var(--accent-lo), var(--accent-hi)); box-shadow: 0 0 12px var(--accent-glow); }
+    .step { position: relative; display: grid; justify-items: center; gap: 14px; font-size: 13px; color: var(--muted); text-align: center; }
+    .step i { width: 13px; height: 13px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair-strong); position: relative; z-index: 1; }
+    .step.done { color: var(--platinum); }
+    .step.done i { background: var(--accent); box-shadow: 0 0 0 4px var(--bg); }
+    .step.now { color: var(--accent-hi); }
+    .step.now i { background: var(--accent-hi); box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent), 0 0 18px 4px var(--accent-glow); }
+    .tracker-mobile { margin-top: 30px; height: 2px; background: var(--hair); position: relative; }
+    .tracker-mobile span { position: absolute; inset: 0 0 0 auto; width: 60%; background: linear-gradient(to left, var(--accent-lo), var(--accent-hi)); }
 
-    /* ---- doors demo ---- */
-    .doors-demo { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-surface); overflow: hidden; background: #000; max-width: 720px; }
-    .doors-scene {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(60% 55% at 50% 72%, rgba(255, 176, 0, 0.55), transparent 70%),
-        linear-gradient(180deg, #2a1e14 0%, #6b3e1a 45%, #c77a2a 70%, #3a2a1c 71%, #16140f 100%);
-    }
-    .door {
-      position: absolute; top: 0; bottom: 0; width: 50.5%;
-      background:
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 3px, transparent 3px 22px, rgba(0, 0, 0, 0.25) 22px 25px, transparent 25px 34px),
-        linear-gradient(180deg, #454b52, #30343a 60%, #25292d);
-      animation: doors 5.5s var(--spring) infinite;
-    }
-    .door.l { left: 0; --dx: -100%; box-shadow: inset -6px 0 0 #1c1f22; }
-    .door.r { right: 0; --dx: 100%; box-shadow: inset 6px 0 0 #1c1f22; }
-    .door::after { /* locking bars */
-      content: ""; position: absolute; top: 8%; bottom: 8%; width: 6px; border-radius: 3px; background: linear-gradient(90deg, #7b8188, #4a4f55);
-    }
-    .door.l::after { right: 22%; }
-    .door.r::after { left: 22%; }
-    .doors-gap { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--amber-hi); box-shadow: 0 0 24px 6px rgba(255, 176, 0, 0.55); animation: gap 5.5s var(--spring) infinite; }
-    @keyframes doors { 0%, 22% { transform: translateX(0); } 62%, 88% { transform: translateX(var(--dx)); } 100% { transform: translateX(0); } }
-    @keyframes gap { 0% { opacity: 0.2; } 18% { opacity: 1; } 40%, 90% { opacity: 0; } 100% { opacity: 0.2; } }
-
-    /* ---- customs stamp scroll indicator ---- */
-    .stamp-stage { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+    /* ---- customs seal scroll indicator ---- */
+    .stamp-stage { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
     .stamp {
-      position: relative; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
-      color: var(--amber); box-shadow: inset 0 0 0 2px var(--amber), inset 0 0 0 6px var(--bg), inset 0 0 0 7px rgba(255, 176, 0, 0.6);
-      font-family: var(--font-latin); font-weight: 800; font-size: 22px; line-height: 1;
+      position: relative; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+      font-family: var(--font-latin); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; direction: ltr; color: var(--accent-hi);
+      box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 0 5px var(--bg), inset 0 0 0 6px rgba(200, 135, 90, 0.45);
       transform: rotate(-12deg);
     }
-    .stamp svg { position: absolute; bottom: 7px; width: 12px; height: 12px; }
-    .stamp.hover { animation: hover 2.4s ease-in-out infinite; }
-    .stamp.strike { animation: strike 2.8s var(--spring) infinite; }
-    @keyframes hover { 0%, 100% { transform: rotate(-12deg) translateY(-6px) scale(1.06); opacity: 0.75; } 50% { transform: rotate(-12deg) translateY(0) scale(1); opacity: 1; } }
+    .stamp svg { position: absolute; bottom: 8px; width: 11px; height: 11px; }
+    .stamp.hover { animation: hover 2.6s ease-in-out infinite; }
+    .stamp.strike { animation: strike 3s var(--spring) infinite; }
+    @keyframes hover { 0%, 100% { transform: rotate(-12deg) translateY(-6px) scale(1.05); opacity: 0.7; } 50% { transform: rotate(-12deg) translateY(0) scale(1); opacity: 1; } }
     @keyframes strike { 0%, 30% { transform: rotate(-4deg) scale(1.5); opacity: 0; } 42% { transform: rotate(-12deg) scale(0.94); opacity: 1; } 50%, 100% { transform: rotate(-12deg) scale(1); opacity: 1; } }
-    .stamp-caption { font-size: 13px; color: var(--muted); max-width: 32ch; }
+    .stamp-caption { font-size: 13px; color: var(--muted); max-width: 30ch; }
 
-    /* ---- torn edge ---- */
-    .torn { position: relative; margin-top: 12px; }
-    .torn svg { display: block; width: 100%; height: 22px; color: var(--paper); }
-    .torn-paper { background: var(--paper); color: var(--ink-dark); padding: 30px 24px 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
-    .torn-paper b { font-size: clamp(26px, 4vw, 40px); font-weight: 900; }
+    /* ---- end: perforated ticket edge instead of a rough tear ---- */
+    .stub { position: relative; margin-top: 8px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, var(--lacquer-hi), var(--lacquer)); box-shadow: inset 0 0 0 1px var(--hair); }
+    .stub-perf { height: 14px; background: radial-gradient(circle at 7px 0, var(--bg) 4.5px, transparent 5px) 0 0 / 14px 14px repeat-x; }
+    .stub-body { padding: clamp(28px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+    .stub-body b { font-weight: 200; font-size: clamp(30px, 4.4vw, 56px); }
 
-    .form-demo { display: grid; gap: 16px; max-width: 520px; }
-    .form-demo label { display: grid; gap: 8px; font-size: 14px; color: #c4bfb3; }
+    .form-demo { display: grid; gap: 18px; max-width: 520px; margin-top: 56px; }
+    .form-demo label { display: grid; gap: 8px; font-size: 13px; color: #a9abb0; }
     .form-demo input {
-      font: inherit; font-size: 16px; color: var(--ink); background: rgba(236, 230, 216, 0.04); border: 0; border-radius: var(--r-surface);
-      padding: 14px 16px; box-shadow: inset 0 0 0 1px rgba(236, 230, 216, 0.18);
+      font: inherit; font-size: 16px; font-weight: 400; color: var(--platinum); background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong);
+      padding: 12px 2px; border-radius: 0; transition: border-color 0.4s var(--spring);
     }
-    .form-demo input::placeholder { color: rgba(236, 230, 216, 0.5); }
-    .form-demo input:focus { outline: none; box-shadow: inset 0 0 0 1px var(--amber), 0 0 0 4px rgba(255, 176, 0, 0.16); }
+    .form-demo input::placeholder { color: rgba(220, 221, 224, 0.42); }
+    .form-demo input:focus { outline: none; border-bottom-color: var(--accent-hi); }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .hero-door.l { transform: translateX(-4%); }
+      .hero-door.r { transform: translateX(4%); }
+      .hero-seam { width: 10%; }
+      .hero-title { font-size: clamp(54px, 17vw, 84px); }
+      .hero-cta .btn { flex: 1 1 100%; justify-content: space-between; }
+      .brand-word { display: none; }
       .tracker { display: none; }
-      .bol-fields { grid-template-columns: 1fr; }
+      .fields { grid-template-columns: 1fr; }
+      .tags { grid-template-columns: minmax(0, 320px); justify-content: center; }
       .tabs { display: flex; width: 100%; }
       .tabs button { flex: 1; padding: 10px 6px; font-size: 14px; }
+      .seal { width: 64px; height: 64px; font-size: 12px; bottom: 54px; }
     }
-    @media (min-width: 641px) { .tracker-mobile { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .door, .doors-gap, .stamp { animation: none !important; } }
+    @media (min-width: 769px) { .tracker-mobile { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .stamp { animation: none !important; } }
   </style>
+  <script>
+    // Sample page only: preview the accent options.
+    const a = new URLSearchParams(location.search).get("accent");
+    if (a) document.documentElement.dataset.accent = a;
+  </script>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <p class="kicker">RADCARSELL / DESIGN TOKENS / DRAFT 1</p>
-      <h1 class="title">از بندر تا پلاک</h1>
-      <p class="intro">نمونه رنگ، فونت و اجزای اصلی لندینگ راد کارسل. کل صفحه مثل یک بارنامه: کاغذ، مهر، بارکد و مسیر ردیابی، روی آسفالت شب و فولاد کانتینر.</p>
-    </div>
+  <header class="site-header">
+    <a class="brand" href="#"><span class="brand-mark">RC</span><span class="brand-word">RADCARSELL</span></a>
+    <nav><a href="#">موجودی</a><a href="#">مراحل کار</a><a href="#">انواع پلاک</a></nav>
+    <a class="btn ghost" href="#" style="min-height:40px;padding:6px 18px;font-size:13px">استعلام خودرو</a>
   </header>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"><div class="hero-door l"></div><div class="hero-door r"></div><div class="hero-seam"></div></div>
+    <div class="wrap hero-copy">
+      <p class="hero-kicker">ANZALI FREE ZONE</p>
+      <h1 class="hero-title">از بندر<br><b>تا پلاک</b></h1>
+      <p class="hero-sub">واردات و ترخیص خودروی پلاک منطقه آزاد انزلی، تا روزی که سوئیچ در دست شماست.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <a class="btn ghost" href="#">موجودی خودرو</a>
+      </div>
+    </div>
+  </section>
 
   <section class="block">
     <div class="wrap">
-      <h2>رنگ‌ها</h2>
-      <p class="note">یک اکسنت، کهربایی علائم بندر. روی کاغذ، کهربایی به‌صورت جوهر تیره‌تر می‌آید تا خوانا بماند. رنگ لوگوی RC هنوز تأیید نشده؛ اگر با کهربایی جور نبود، اکسنت از لوگو می‌آید.</p>
+      <h2 class="block-title">رنگ‌ها</h2>
+      <p class="note">مشکی پیانویی، پلاتین و کروم، و فقط یک رنگ فلزی گرم برای اکسنت. اکسنت بعد از دیدن رنگ‌های لوگوی RC قطعی می‌شود. در همین صفحه سه گزینه قابل مقایسه است.</p>
       <div class="swatches">
-        <div class="sw"><div class="sw-chip" style="background:#0e0f11;box-shadow:inset 0 0 0 1px rgba(236,230,216,.12)"></div><div class="sw-meta"><b>آسفالت شب</b><code>#0e0f11 · bg</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:#3a3f45"></div><div class="sw-meta"><b>فولاد کانتینر</b><code>#3a3f45 · steel</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:#ffb000"></div><div class="sw-meta"><b>کهربایی بندر</b><code>#ffb000 · accent</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:#ece6d8"></div><div class="sw-meta"><b>کاغذ بارنامه</b><code>#ece6d8 · paper / ink</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:#8a5a00"></div><div class="sw-meta"><b>جوهر مهر</b><code>#8a5a00 · on paper</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:#9ea1a6"></div><div class="sw-meta"><b>متن فرعی</b><code>#9ea1a6 · muted</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#09090a;box-shadow:inset 0 0 0 1px rgba(220,221,224,.14)"></div><div class="m"><b>مشکی پیانویی</b><code>#09090A</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#1b1b1e,#121214)"></div><div class="m"><b>لاک براق</b><code>#121214</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#f4f5f7,#d4d6da 48%,#b3b6bc 52%,#d9dbdf)"></div><div class="m"><b>پلاتین و کروم</b><code>#DCDDE0</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,var(--accent-hi),var(--accent) 50%,var(--accent-lo))"></div><div class="m"><b>اکسنت</b><code>ACCENT</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#3a2519,#2a1a12)"></div><div class="m"><b>چرم کنیاکی</b><code>#2A1A12</code></div></div>
       </div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap type-grid">
-      <h2>فونت‌ها</h2>
-      <div class="spec"><small>Vazirmatn 900 · tight word-spacing</small><p class="t-display">از بندر<br>تا <em>پلاک</em></p></div>
-      <div class="spec"><small>Vazirmatn 800</small><p class="t-h2">ترخیص، بدون سردرگمی</p></div>
-      <div class="spec"><small>Big Shoulders Stencil 800 · Latin</small><p class="t-latin">RAD<span>CAR</span>SELL</p></div>
-      <div class="spec"><small>Vazirmatn 400 · body</small><p class="t-body">خودروی پلاک منطقه آزاد را از بندر انزلی تا دست شما همراهی می‌کنیم: خرید، واردات، ترخیص و پلاک، هر مرحله روشن و قابل پیگیری.</p></div>
-      <div class="spec"><small>Space Mono · codes and numbers</small><p class="t-mono">0911 984 2354 &nbsp; / &nbsp; BL-RC-ANZ</p></div>
+      <h2 class="block-title">فونت‌ها</h2>
+      <div class="spec"><small>VAZIRMATN 200 + 600</small><p class="t-display">انزلی<br><b>منطقه آزاد</b></p></div>
+      <div class="spec"><small>VAZIRMATN 300</small><p class="t-h2">ترخیص، بدون سردرگمی</p></div>
+      <div class="spec"><small>SYNCOPATE 400 · CHROME</small><p class="t-latin">RADCARSELL</p></div>
+      <div class="spec"><small>VAZIRMATN 300 · BODY</small><p class="t-body">خودروی پلاک منطقه آزاد را از بندر انزلی تا دست شما همراهی می‌کنیم: خرید، واردات، ترخیص و پلاک، هر مرحله روشن و قابل پیگیری.</p></div>
+      <div class="spec"><small>SYNCOPATE · LABELS AND CODES</small><p class="t-small">0911 984 2354 &nbsp; / &nbsp; ANZALI FREE ZONE</p></div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2>دکمه‌ها و تب‌ها</h2>
-      <p class="note">کنترل‌ها قرصی، سطح‌ها با گوشه ۶ پیکسل. دکمه اصلی: لبه روشن، براق شدن در hover، آیکون داخل دایره.</p>
+      <h2 class="block-title">دکمه‌ها و تب‌ها</h2>
+      <p class="note">دکمه اصلی کرومی با لبه روشن و برق عبوری در hover؛ آیکون در دایره مشکی با رنگ اکسنت.</p>
       <div class="row">
-        <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
-        <a class="btn ghost" href="#">موجودی خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <a class="btn ghost" href="#">موجودی خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
         <div class="tabs" role="tablist"><button role="tab" aria-selected="true">پلاک گذر</button><button role="tab" aria-selected="false">منطقه آزاد</button><button role="tab" aria-selected="false">دائم</button></div>
       </div>
     </div>
@@ -285,45 +329,43 @@
 
   <section class="block">
     <div class="wrap">
-      <h2>قاب دوقابه: بارنامه</h2>
-      <p class="note">سینی فولادی بیرونی و برگه کاغذی داخلی. برای فرم استعلام و پنل‌ها. مهر روی کاغذ با جوهر کهربایی.</p>
-      <div class="shell" style="max-width:560px">
-        <div class="bol">
-          <div class="bol-head"><b>برگه استعلام خودرو</b><span class="bol-no">BL-RC / ANZALI</span></div>
-          <dl class="bol-fields">
-            <div><dt>مدل دلخواه</dt><dd>بنز C300</dd></div>
+      <h2 class="block-title">قاب دوقابه: بارنامه</h2>
+      <p class="note">لبه فلزی براشد، سینی تیره و صفحه لاکی. بارنامه به‌جای کاغذ کرم، یک سند مشکی با خطوط مویی و مهر فویل برجسته است.</p>
+      <div class="shell" style="max-width:580px"><div class="shell-inner">
+        <div class="manifest">
+          <div class="manifest-head"><b>استعلام خودرو</b><span>BILL OF LADING</span></div>
+          <dl class="fields">
+            <div><dt>مدل دلخواه</dt><dd>مرسدس‌بنز E300</dd></div>
             <div><dt>سال</dt><dd>نمونه</dd></div>
             <div><dt>نوع پلاک</dt><dd>منطقه آزاد</dd></div>
             <div><dt>شهر</dt><dd>رشت</dd></div>
           </dl>
           <div class="barcode" aria-hidden="true"></div>
-          <span class="ink-stamp">دریافت شد</span>
+          <span class="seal" aria-hidden="true">RC</span>
         </div>
-      </div>
+      </div></div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2>کارت موجودی: برچسب حمل</h2>
-      <p class="note">سوراخ نخ با پرچ فلزی و مهر «نمونه». عکس واقعی از هایلایت «موجودی خودرو» جای راه‌راه‌ها می‌نشیند. قیمت نمی‌آید.</p>
+      <h2 class="block-title">کارت موجودی: برچسب چرمی</h2>
+      <p class="note">برچسب حمل از چرم کنیاکی تیره با دوخت، پرچ کرومی و بند. عکس واقعی از هایلایت «موجودی خودرو» می‌آید. قیمت نمی‌آید.</p>
       <div class="tags">
         <article class="tag">
-          <svg class="tag-string" viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 0 C 14 22, 26 34, 30 44 M50 0 C 46 22, 34 34, 30 44"/></svg>
+          <svg class="tag-cord" viewBox="0 0 64 50" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 0 C 14 24, 26 38, 32 50 M56 0 C 50 24, 38 38, 32 50"/></svg>
           <div class="tag-body">
             <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
-            <h3>بنز C300</h3>
-            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC-01</code></div>
-            <div class="tag-perf"></div>
+            <h3>مرسدس‌بنز C300</h3>
+            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC 01</code></div>
           </div>
         </article>
         <article class="tag">
-          <svg class="tag-string" viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 0 C 14 22, 26 34, 30 44 M50 0 C 46 22, 34 34, 30 44"/></svg>
+          <svg class="tag-cord" viewBox="0 0 64 50" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 0 C 14 24, 26 38, 32 50 M56 0 C 50 24, 38 38, 32 50"/></svg>
           <div class="tag-body">
             <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
             <h3>تویوتا لندکروزر</h3>
-            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC-02</code></div>
-            <div class="tag-perf"></div>
+            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC 02</code></div>
           </div>
         </article>
       </div>
@@ -332,8 +374,8 @@
 
   <section class="block">
     <div class="wrap">
-      <h2>ردیاب محموله</h2>
-      <p class="note">با اسکرول مرحله‌به‌مرحله روشن می‌شود. فقط اسم مرحله، بدون زمان یا ادعا. دسکتاپ: پایین صفحه. موبایل: یک نوار نازک بالا (نمونه پایین).</p>
+      <h2 class="block-title">ردیاب محموله</h2>
+      <p class="note">یک خط مویی با ایستگاه‌هایی که با اسکرول روشن می‌شوند. فقط اسم مرحله. دسکتاپ پایین صفحه، موبایل یک نوار نازک بالا.</p>
       <div class="tracker" aria-hidden="true">
         <div class="step done"><i></i>خرید</div>
         <div class="step done"><i></i>حمل</div>
@@ -348,37 +390,26 @@
 
   <section class="block">
     <div class="wrap">
-      <h2>ورود هیرو: درهای کانتینر</h2>
-      <p class="note">دو لنگه فلزی از وسط به دو طرف باز می‌شوند و شکاف نور کهربایی بین‌شان است. در صفحه اصلی با اسکرول کنترل می‌شود؛ اینجا برای نمایش خودکار تکرار می‌شود. پشت درها فعلاً یک گرادیان موقت است تا ویدیو برسد.</p>
-      <div class="doors-demo" aria-hidden="true">
-        <div class="doors-scene"></div>
-        <div class="door l"></div><div class="door r"></div>
-        <div class="doors-gap"></div>
+      <h2 class="block-title">نشانگر اسکرول: مهر</h2>
+      <div class="stamp-stage">
+        <div class="stamp hover" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        <p class="stamp-caption">قبل از اسکرول: معلق، آرام بالا و پایین.</p>
+        <div class="stamp strike" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        <p class="stamp-caption">با اولین اسکرول: یک بار ضرب می‌خورد و محو می‌شود.</p>
       </div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2>نشانگر اسکرول: مهر گمرکی</h2>
-      <div class="stamp-stage">
-        <div class="stamp hover" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
-        <p class="stamp-caption">قبل از اسکرول: مهر کمی بالاتر معلق است و آرام بالا و پایین می‌رود.</p>
-        <div class="stamp strike" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
-        <p class="stamp-caption">با اولین اسکرول: یک بار «ضرب» می‌خورد و می‌نشیند، بعد محو می‌شود.</p>
+      <h2 class="block-title">پایان صفحه</h2>
+      <p class="note">به‌جای پارگی زبر کاغذ، لبه سوراخ‌دار مثل ته‌برگ یک بلیت یا سند رسمی.</p>
+      <div class="stub">
+        <div class="stub-perf" aria-hidden="true"></div>
+        <div class="stub-body"><b>خودروی بعدی شما؟</b><a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a></div>
       </div>
-    </div>
-  </section>
-
-  <section class="block" style="border-bottom:0">
-    <div class="wrap">
-      <h2>پایان صفحه: لبه پاره بارنامه</h2>
-      <div class="torn">
-        <svg viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 22V9l6 3 5-6 7 4 4-5 8 7 5-4 6 2 3-6 9 8 4-3 7 4 5-7 6 5 8-2 3 5 6-8 7 6 4-3 9 5 3-6 7 3 6-4 5 7 8-5 4 3 6-6 7 7 5-3 8 4 3-7 6 5 7-2 4 4 8-7 5 5 6-3 3 6 9-6 4 3 7-5 5 6 6 1 4-6 8 5 3-3 7 6 5-7 6 4 8-2 3 5 6-6 7 4 4-3 9 6 3-7 7 4 6-3 5 5 8-6 4 4 6-5 7 7 5-4 8 3 3-6 6 5 7-2 4 3 8-6 5 6 6-4 3 5 9-7 4 3 7-4 5 6 6-3 4 4 8-6 3 5 7-4 5 6 6-5 8 5V22z"/></svg>
-        <div class="torn-paper"><b>خودروی بعدی شما کدام است؟</b><a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a></div>
-      </div>
-      <div class="form-demo" style="margin-top:48px">
-        <label>مدل دلخواه<input placeholder="مثلاً بنز E300"></label>
+      <div class="form-demo">
+        <label>مدل دلخواه<input placeholder="مثلاً مرسدس‌بنز E300"></label>
         <label>شماره همراه<input placeholder="شماره خود را وارد کنید" dir="ltr" style="text-align:right"></label>
       </div>
     </div>

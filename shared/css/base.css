@@ -11,7 +11,8 @@
 @font-face { font-family: "Changa"; src: url("../fonts/changa-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
 @font-face { font-family: "Space Mono"; src: url("../fonts/SpaceMono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Space Mono"; src: url("../fonts/SpaceMono-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Big Shoulders Stencil"; src: url("../fonts/big-shoulders-stencil-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Syncopate"; src: url("../fonts/syncopate-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Syncopate"; src: url("../fonts/syncopate-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
 
 :root {
   --bg: #0b0b0c;

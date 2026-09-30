@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>راد کارسل: نمونه رنگ و فونت</title>
+  <link rel="stylesheet" href="../shared/css/base.css">
+  <style>
+    /* Rad Carsell, "from port to plate": night asphalt, container steel, port-signal amber, bill-of-lading paper. */
+    :root {
+      --bg: #0e0f11;          /* night asphalt */
+      --steel: #3a3f45;       /* container steel */
+      --steel-hi: #555b62;
+      --steel-lo: #24282c;
+      --amber: #ffb000;       /* port signal amber: the only accent */
+      --amber-hi: #ffc848;
+      --amber-lo: #d99400;
+      --amber-ink: #8a5a00;   /* amber as ink on paper (stamps, rules) */
+      --paper: #ece6d8;       /* bill of lading */
+      --paper-lo: #ddd5c3;
+      --ink: #ece6d8;         /* text on dark = the same paper tone */
+      --ink-dark: #17181b;    /* text on paper */
+      --muted: #9ea1a6;
+      --hair: rgba(236, 230, 216, 0.12);
+      --accent: var(--amber);
+      --font-display: "Vazirmatn", system-ui, sans-serif;
+      --font-latin: "Big Shoulders Stencil", "Vazirmatn", sans-serif;
+      --r-surface: 6px;       /* cards, panels, inputs */
+      --r-control: 999px;     /* buttons, tabs, chips */
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    body { font-weight: 400; }
+    .wrap { width: min(1180px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+    header.top { padding: 48px 0 24px; border-bottom: 1px solid var(--hair); }
+    .kicker { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; direction: ltr; text-align: right; }
+    h1.title { font-family: var(--font-display); font-weight: 900; font-size: clamp(44px, 9vw, 104px); line-height: 1; margin: 12px 0 0; word-spacing: -0.06em; }
+    .intro { color: var(--muted); max-width: 60ch; margin: 14px 0 0; }
+    section.block { padding: 56px 0; border-bottom: 1px solid var(--hair); }
+    .block > .wrap > h2 { font-family: var(--font-display); font-weight: 800; font-size: 26px; margin: 0 0 6px; }
+    .note { color: var(--muted); font-size: 14px; margin: 0 0 28px; max-width: 70ch; }
+
+    /* ---- swatches ---- */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .sw { border-radius: var(--r-surface); overflow: hidden; box-shadow: inset 0 0 0 1px var(--hair); }
+    .sw-chip { height: 110px; }
+    .sw-meta { padding: 12px 14px; display: grid; gap: 2px; background: #131417; }
+    .sw-meta b { font-weight: 700; font-size: 15px; }
+    .sw-meta code { font-family: var(--font-mono); font-size: 12px; color: var(--muted); direction: ltr; text-align: right; }
+
+    /* ---- type ---- */
+    .type-grid { display: grid; gap: 34px; }
+    .spec { display: grid; gap: 8px; }
+    .spec small { font-family: var(--font-mono); font-size: 11px; color: var(--muted); direction: ltr; text-align: right; }
+    .t-display { font-family: var(--font-display); font-weight: 900; font-size: clamp(52px, 10vw, 128px); line-height: 0.95; word-spacing: -0.08em; margin: 0; }
+    .t-display em { font-style: normal; color: var(--amber); }
+    .t-h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; margin: 0; }
+    .t-latin { font-family: var(--font-latin); font-weight: 800; font-size: clamp(56px, 11vw, 140px); line-height: 0.85; letter-spacing: 0.02em; margin: 0; direction: ltr; text-align: right; }
+    .t-latin span { color: var(--amber); }
+    .t-body { font-size: 17px; line-height: 1.9; max-width: 56ch; margin: 0; color: #d6d1c5; }
+    .t-mono { font-family: var(--font-mono); font-size: 15px; margin: 0; direction: ltr; text-align: right; color: var(--amber-hi); letter-spacing: 0.04em; }
+
+    /* ---- buttons: amber signal bar, lit top edge, sheen, icon in its own ring ---- */
+    .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn {
+      position: relative; isolation: isolate; overflow: hidden;
+      gap: 14px; padding: 8px 24px; min-height: 52px; border-radius: var(--r-control);
+      background: linear-gradient(180deg, var(--amber-hi) 0%, var(--amber) 55%, var(--amber-lo) 100%);
+      color: #17130a; font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(90, 55, 0, 0.3), 0 14px 32px -16px rgba(255, 176, 0, 0.65);
+      transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring);
+    }
+    .btn::after {
+      content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+      transform: translateX(120%); transition: transform 0.9s var(--spring);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:hover::after { transform: translateX(-120%); }
+    .btn:active { transform: translateY(0) scale(0.97); }
+    .btn:has(.btn-icon) { padding-inline-end: 7px; }
+    .btn-icon {
+      display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(23, 19, 10, 0.12); box-shadow: inset 0 0 0 1px rgba(23, 19, 10, 0.16);
+      transition: transform 0.45s var(--spring);
+    }
+    .btn-icon svg { width: 18px; height: 18px; }
+    .btn:hover .btn-icon { transform: translateX(-3px); }
+    .btn.ghost {
+      background: rgba(58, 63, 69, 0.35); color: var(--ink);
+      box-shadow: inset 0 0 0 1px rgba(255, 176, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .btn.ghost::after { background: linear-gradient(105deg, transparent 30%, rgba(255, 176, 0, 0.22) 50%, transparent 70%); }
+    .btn.ghost .btn-icon { background: rgba(255, 176, 0, 0.12); box-shadow: inset 0 0 0 1px rgba(255, 176, 0, 0.3); color: var(--amber-hi); }
+
+    .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: var(--r-control); background: rgba(58, 63, 69, 0.35); box-shadow: inset 0 0 0 1px var(--hair); }
+    .tabs button { border: 0; background: none; cursor: pointer; padding: 10px 20px; border-radius: var(--r-control); color: var(--muted); font-size: 15px; white-space: nowrap; }
+    .tabs button[aria-selected="true"] { background: linear-gradient(180deg, var(--amber-hi), var(--amber) 60%, var(--amber-lo)); color: #17130a; font-weight: 700; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+
+    /* ---- double frame: steel tray + paper plate (bill of lading) ---- */
+    .shell {
+      padding: 6px; border-radius: calc(var(--r-surface) + 6px);
+      background: linear-gradient(180deg, rgba(85, 91, 98, 0.45), rgba(36, 40, 44, 0.45));
+      box-shadow: inset 0 0 0 1px rgba(236, 230, 216, 0.14), 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+    }
+    .bol {
+      position: relative; border-radius: var(--r-surface); padding: 26px clamp(20px, 3vw, 34px) 24px;
+      background: var(--paper); color: var(--ink-dark);
+      background-image:
+        linear-gradient(rgba(23, 24, 27, 0.06) 1px, transparent 1px);
+      background-size: 100% 34px; background-position: 0 70px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+    .bol-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 14px; border-bottom: 2px solid var(--ink-dark); }
+    .bol-head b { font-weight: 900; font-size: 22px; }
+    .bol-no { font-family: var(--font-mono); font-size: 12px; direction: ltr; color: #4b4d52; }
+    .bol-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; margin: 6px 0 0; }
+    .bol-fields div { padding: 8px 0; border-bottom: 1px dashed rgba(23, 24, 27, 0.25); }
+    .bol-fields dt { font-size: 12px; color: #5b5d62; }
+    .bol-fields dd { margin: 0; font-weight: 700; }
+    .barcode {
+      height: 34px; margin-top: 18px; opacity: 0.85;
+      background: repeating-linear-gradient(90deg, var(--ink-dark) 0 2px, transparent 2px 4px, var(--ink-dark) 4px 5px, transparent 5px 9px, var(--ink-dark) 9px 12px, transparent 12px 14px, var(--ink-dark) 14px 15px, transparent 15px 19px);
+    }
+    .ink-stamp {
+      position: absolute; left: 22px; bottom: 58px; transform: rotate(-9deg);
+      padding: 6px 14px; border: 2.5px solid var(--amber-ink); border-radius: 4px; outline: 1px solid var(--amber-ink); outline-offset: 3px;
+      color: var(--amber-ink); font-weight: 900; font-size: 18px; opacity: 0.85; mix-blend-mode: multiply;
+    }
+
+    /* ---- luggage tag inventory card ---- */
+    .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 300px)); gap: 22px; }
+    @media (max-width: 640px) { .tags { grid-template-columns: minmax(0, 320px); justify-content: center; } }
+    .tag { position: relative; padding-top: 34px; }
+    .tag-string { position: absolute; top: 0; left: 50%; width: 60px; height: 44px; margin-left: -30px; color: rgba(236, 230, 216, 0.5); }
+    .tag-body {
+      position: relative; background: var(--paper); color: var(--ink-dark); padding: 44px 16px 18px;
+      clip-path: polygon(22% 0, 78% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+      border-radius: 0 0 var(--r-surface) var(--r-surface);
+    }
+    .tag-body::before { /* string hole with a metal eyelet */
+      content: ""; position: absolute; top: 12px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%;
+      background: var(--bg); box-shadow: 0 0 0 4px #b9b2a2, 0 0 0 5px rgba(23, 24, 27, 0.3);
+    }
+    .tag-photo {
+      aspect-ratio: 4 / 3; border-radius: 4px; display: grid; place-items: center; text-align: center;
+      background: repeating-linear-gradient(135deg, #cfc7b4 0 10px, #d8d0bd 10px 20px);
+      color: #5b5d62; font-size: 13px; position: relative;
+    }
+    .tag-photo .sample {
+      position: absolute; top: 12px; right: 10px; transform: rotate(8deg);
+      border: 2px solid var(--amber-ink); color: var(--amber-ink); padding: 2px 10px; border-radius: 3px; font-weight: 900; font-size: 15px;
+      background: rgba(236, 230, 216, 0.6);
+    }
+    .tag h3 { margin: 14px 0 2px; font-size: 20px; font-weight: 900; }
+    .tag .meta { display: flex; justify-content: space-between; font-size: 13px; color: #5b5d62; }
+    .tag .meta code { font-family: var(--font-mono); direction: ltr; }
+    .tag-perf { margin: 14px -16px 0; border-top: 2px dashed rgba(23, 24, 27, 0.3); }
+
+    /* ---- shipment tracker ---- */
+    .tracker { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; padding: 18px 0 4px; }
+    .tracker::before { content: ""; position: absolute; top: 25px; right: 8%; left: 8%; height: 2px; background: var(--steel); }
+    .tracker::after { content: ""; position: absolute; top: 25px; right: 8%; width: calc(84% * 0.5); height: 2px; background: var(--amber); }
+    .step { position: relative; display: grid; justify-items: center; gap: 10px; font-size: 13px; color: var(--muted); text-align: center; }
+    .step i { width: 16px; height: 16px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--steel-hi); position: relative; z-index: 1; }
+    .step.done { color: var(--ink); }
+    .step.done i { background: var(--amber); box-shadow: none; }
+    .step.now { color: var(--amber-hi); font-weight: 700; }
+    .step.now i { background: var(--bg); box-shadow: inset 0 0 0 2px var(--amber), 0 0 0 5px rgba(255, 176, 0, 0.18); }
+    .tracker-mobile { margin-top: 26px; height: 4px; border-radius: 2px; background: var(--steel-lo); position: relative; overflow: hidden; }
+    .tracker-mobile span { position: absolute; inset: 0 0 0 auto; width: 50%; background: var(--amber); }
+
+    /* ---- doors demo ---- */
+    .doors-demo { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-surface); overflow: hidden; background: #000; max-width: 720px; }
+    .doors-scene {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(60% 55% at 50% 72%, rgba(255, 176, 0, 0.55), transparent 70%),
+        linear-gradient(180deg, #2a1e14 0%, #6b3e1a 45%, #c77a2a 70%, #3a2a1c 71%, #16140f 100%);
+    }
+    .door {
+      position: absolute; top: 0; bottom: 0; width: 50.5%;
+      background:
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 3px, transparent 3px 22px, rgba(0, 0, 0, 0.25) 22px 25px, transparent 25px 34px),
+        linear-gradient(180deg, #454b52, #30343a 60%, #25292d);
+      animation: doors 5.5s var(--spring) infinite;
+    }
+    .door.l { left: 0; --dx: -100%; box-shadow: inset -6px 0 0 #1c1f22; }
+    .door.r { right: 0; --dx: 100%; box-shadow: inset 6px 0 0 #1c1f22; }
+    .door::after { /* locking bars */
+      content: ""; position: absolute; top: 8%; bottom: 8%; width: 6px; border-radius: 3px; background: linear-gradient(90deg, #7b8188, #4a4f55);
+    }
+    .door.l::after { right: 22%; }
+    .door.r::after { left: 22%; }
+    .doors-gap { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--amber-hi); box-shadow: 0 0 24px 6px rgba(255, 176, 0, 0.55); animation: gap 5.5s var(--spring) infinite; }
+    @keyframes doors { 0%, 22% { transform: translateX(0); } 62%, 88% { transform: translateX(var(--dx)); } 100% { transform: translateX(0); } }
+    @keyframes gap { 0% { opacity: 0.2; } 18% { opacity: 1; } 40%, 90% { opacity: 0; } 100% { opacity: 0.2; } }
+
+    /* ---- customs stamp scroll indicator ---- */
+    .stamp-stage { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+    .stamp {
+      position: relative; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+      color: var(--amber); box-shadow: inset 0 0 0 2px var(--amber), inset 0 0 0 6px var(--bg), inset 0 0 0 7px rgba(255, 176, 0, 0.6);
+      font-family: var(--font-latin); font-weight: 800; font-size: 22px; line-height: 1;
+      transform: rotate(-12deg);
+    }
+    .stamp svg { position: absolute; bottom: 7px; width: 12px; height: 12px; }
+    .stamp.hover { animation: hover 2.4s ease-in-out infinite; }
+    .stamp.strike { animation: strike 2.8s var(--spring) infinite; }
+    @keyframes hover { 0%, 100% { transform: rotate(-12deg) translateY(-6px) scale(1.06); opacity: 0.75; } 50% { transform: rotate(-12deg) translateY(0) scale(1); opacity: 1; } }
+    @keyframes strike { 0%, 30% { transform: rotate(-4deg) scale(1.5); opacity: 0; } 42% { transform: rotate(-12deg) scale(0.94); opacity: 1; } 50%, 100% { transform: rotate(-12deg) scale(1); opacity: 1; } }
+    .stamp-caption { font-size: 13px; color: var(--muted); max-width: 32ch; }
+
+    /* ---- torn edge ---- */
+    .torn { position: relative; margin-top: 12px; }
+    .torn svg { display: block; width: 100%; height: 22px; color: var(--paper); }
+    .torn-paper { background: var(--paper); color: var(--ink-dark); padding: 30px 24px 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+    .torn-paper b { font-size: clamp(26px, 4vw, 40px); font-weight: 900; }
+
+    .form-demo { display: grid; gap: 16px; max-width: 520px; }
+    .form-demo label { display: grid; gap: 8px; font-size: 14px; color: #c4bfb3; }
+    .form-demo input {
+      font: inherit; font-size: 16px; color: var(--ink); background: rgba(236, 230, 216, 0.04); border: 0; border-radius: var(--r-surface);
+      padding: 14px 16px; box-shadow: inset 0 0 0 1px rgba(236, 230, 216, 0.18);
+    }
+    .form-demo input::placeholder { color: rgba(236, 230, 216, 0.5); }
+    .form-demo input:focus { outline: none; box-shadow: inset 0 0 0 1px var(--amber), 0 0 0 4px rgba(255, 176, 0, 0.16); }
+
+    @media (max-width: 640px) {
+      .tracker { display: none; }
+      .bol-fields { grid-template-columns: 1fr; }
+      .tabs { display: flex; width: 100%; }
+      .tabs button { flex: 1; padding: 10px 6px; font-size: 14px; }
+    }
+    @media (min-width: 641px) { .tracker-mobile { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .door, .doors-gap, .stamp { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="kicker">RADCARSELL / DESIGN TOKENS / DRAFT 1</p>
+      <h1 class="title">از بندر تا پلاک</h1>
+      <p class="intro">نمونه رنگ، فونت و اجزای اصلی لندینگ راد کارسل. کل صفحه مثل یک بارنامه: کاغذ، مهر، بارکد و مسیر ردیابی، روی آسفالت شب و فولاد کانتینر.</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>رنگ‌ها</h2>
+      <p class="note">یک اکسنت، کهربایی علائم بندر. روی کاغذ، کهربایی به‌صورت جوهر تیره‌تر می‌آید تا خوانا بماند. رنگ لوگوی RC هنوز تأیید نشده؛ اگر با کهربایی جور نبود، اکسنت از لوگو می‌آید.</p>
+      <div class="swatches">
+        <div class="sw"><div class="sw-chip" style="background:#0e0f11;box-shadow:inset 0 0 0 1px rgba(236,230,216,.12)"></div><div class="sw-meta"><b>آسفالت شب</b><code>#0e0f11 · bg</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#3a3f45"></div><div class="sw-meta"><b>فولاد کانتینر</b><code>#3a3f45 · steel</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#ffb000"></div><div class="sw-meta"><b>کهربایی بندر</b><code>#ffb000 · accent</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#ece6d8"></div><div class="sw-meta"><b>کاغذ بارنامه</b><code>#ece6d8 · paper / ink</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#8a5a00"></div><div class="sw-meta"><b>جوهر مهر</b><code>#8a5a00 · on paper</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#9ea1a6"></div><div class="sw-meta"><b>متن فرعی</b><code>#9ea1a6 · muted</code></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap type-grid">
+      <h2>فونت‌ها</h2>
+      <div class="spec"><small>Vazirmatn 900 · tight word-spacing</small><p class="t-display">از بندر<br>تا <em>پلاک</em></p></div>
+      <div class="spec"><small>Vazirmatn 800</small><p class="t-h2">ترخیص، بدون سردرگمی</p></div>
+      <div class="spec"><small>Big Shoulders Stencil 800 · Latin</small><p class="t-latin">RAD<span>CAR</span>SELL</p></div>
+      <div class="spec"><small>Vazirmatn 400 · body</small><p class="t-body">خودروی پلاک منطقه آزاد را از بندر انزلی تا دست شما همراهی می‌کنیم: خرید، واردات، ترخیص و پلاک، هر مرحله روشن و قابل پیگیری.</p></div>
+      <div class="spec"><small>Space Mono · codes and numbers</small><p class="t-mono">0911 984 2354 &nbsp; / &nbsp; BL-RC-ANZ</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>دکمه‌ها و تب‌ها</h2>
+      <p class="note">کنترل‌ها قرصی، سطح‌ها با گوشه ۶ پیکسل. دکمه اصلی: لبه روشن، براق شدن در hover، آیکون داخل دایره.</p>
+      <div class="row">
+        <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <a class="btn ghost" href="#">موجودی خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <div class="tabs" role="tablist"><button role="tab" aria-selected="true">پلاک گذر</button><button role="tab" aria-selected="false">منطقه آزاد</button><button role="tab" aria-selected="false">دائم</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>قاب دوقابه: بارنامه</h2>
+      <p class="note">سینی فولادی بیرونی و برگه کاغذی داخلی. برای فرم استعلام و پنل‌ها. مهر روی کاغذ با جوهر کهربایی.</p>
+      <div class="shell" style="max-width:560px">
+        <div class="bol">
+          <div class="bol-head"><b>برگه استعلام خودرو</b><span class="bol-no">BL-RC / ANZALI</span></div>
+          <dl class="bol-fields">
+            <div><dt>مدل دلخواه</dt><dd>بنز C300</dd></div>
+            <div><dt>سال</dt><dd>نمونه</dd></div>
+            <div><dt>نوع پلاک</dt><dd>منطقه آزاد</dd></div>
+            <div><dt>شهر</dt><dd>رشت</dd></div>
+          </dl>
+          <div class="barcode" aria-hidden="true"></div>
+          <span class="ink-stamp">دریافت شد</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>کارت موجودی: برچسب حمل</h2>
+      <p class="note">سوراخ نخ با پرچ فلزی و مهر «نمونه». عکس واقعی از هایلایت «موجودی خودرو» جای راه‌راه‌ها می‌نشیند. قیمت نمی‌آید.</p>
+      <div class="tags">
+        <article class="tag">
+          <svg class="tag-string" viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 0 C 14 22, 26 34, 30 44 M50 0 C 46 22, 34 34, 30 44"/></svg>
+          <div class="tag-body">
+            <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
+            <h3>بنز C300</h3>
+            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC-01</code></div>
+            <div class="tag-perf"></div>
+          </div>
+        </article>
+        <article class="tag">
+          <svg class="tag-string" viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 0 C 14 22, 26 34, 30 44 M50 0 C 46 22, 34 34, 30 44"/></svg>
+          <div class="tag-body">
+            <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
+            <h3>تویوتا لندکروزر</h3>
+            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC-02</code></div>
+            <div class="tag-perf"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>ردیاب محموله</h2>
+      <p class="note">با اسکرول مرحله‌به‌مرحله روشن می‌شود. فقط اسم مرحله، بدون زمان یا ادعا. دسکتاپ: پایین صفحه. موبایل: یک نوار نازک بالا (نمونه پایین).</p>
+      <div class="tracker" aria-hidden="true">
+        <div class="step done"><i></i>خرید</div>
+        <div class="step done"><i></i>حمل</div>
+        <div class="step done"><i></i>ورود به منطقه آزاد</div>
+        <div class="step now"><i></i>ترخیص</div>
+        <div class="step"><i></i>پلاک</div>
+        <div class="step"><i></i>تحویل</div>
+      </div>
+      <div class="tracker-mobile" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>ورود هیرو: درهای کانتینر</h2>
+      <p class="note">دو لنگه فلزی از وسط به دو طرف باز می‌شوند و شکاف نور کهربایی بین‌شان است. در صفحه اصلی با اسکرول کنترل می‌شود؛ اینجا برای نمایش خودکار تکرار می‌شود. پشت درها فعلاً یک گرادیان موقت است تا ویدیو برسد.</p>
+      <div class="doors-demo" aria-hidden="true">
+        <div class="doors-scene"></div>
+        <div class="door l"></div><div class="door r"></div>
+        <div class="doors-gap"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>نشانگر اسکرول: مهر گمرکی</h2>
+      <div class="stamp-stage">
+        <div class="stamp hover" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        <p class="stamp-caption">قبل از اسکرول: مهر کمی بالاتر معلق است و آرام بالا و پایین می‌رود.</p>
+        <div class="stamp strike" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        <p class="stamp-caption">با اولین اسکرول: یک بار «ضرب» می‌خورد و می‌نشیند، بعد محو می‌شود.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="border-bottom:0">
+    <div class="wrap">
+      <h2>پایان صفحه: لبه پاره بارنامه</h2>
+      <div class="torn">
+        <svg viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 22V9l6 3 5-6 7 4 4-5 8 7 5-4 6 2 3-6 9 8 4-3 7 4 5-7 6 5 8-2 3 5 6-8 7 6 4-3 9 5 3-6 7 3 6-4 5 7 8-5 4 3 6-6 7 7 5-3 8 4 3-7 6 5 7-2 4 4 8-7 5 5 6-3 3 6 9-6 4 3 7-5 5 6 6 1 4-6 8 5 3-3 7 6 5-7 6 4 8-2 3 5 6-6 7 4 4-3 9 6 3-7 7 4 6-3 5 5 8-6 4 4 6-5 7 7 5-4 8 3 3-6 6 5 7-2 4 3 8-6 5 6 6-4 3 5 9-7 4 3 7-4 5 6 6-3 4 4 8-6 3 5 7-4 5 6 6-5 8 5V22z"/></svg>
+        <div class="torn-paper"><b>خودروی بعدی شما کدام است؟</b><a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a></div>
+      </div>
+      <div class="form-demo" style="margin-top:48px">
+        <label>مدل دلخواه<input placeholder="مثلاً بنز E300"></label>
+        <label>شماره همراه<input placeholder="شماره خود را وارد کنید" dir="ltr" style="text-align:right"></label>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

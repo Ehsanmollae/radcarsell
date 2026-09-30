@@ -1,8 +1,8 @@
 {
   "bg": "#120c08",
-  "source": "desktop.mp4",
-  "version": 1790761516,
-  "ext": "webp",
-  "desktop": { "count": 120, "width": 1280, "height": 720 },
-  "mobile": { "count": 90, "width": 720, "height": 1284 }
+  "source": "desktop-even.mp4",
+  "version": 1790769285,
+  "ext": "avif",
+  "desktop": { "count": 130, "width": 1920, "height": 1080 },
+  "mobile": { "count": 106, "width": 810, "height": 1440 }
 }

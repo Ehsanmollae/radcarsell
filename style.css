@@ -112,6 +112,7 @@ body { font-weight: 300; }
 .hero-sub { margin: 20px 0 0; font-size: clamp(17px, 1.4vw, 21px); color: var(--ink-soft); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .hero .scene-inner { max-width: min(62vw, 900px); }
+.scene.align-start:not(.hero) .scene-inner { max-width: min(32vw, 520px); }
 
 /* Scroll cue: a champagne seal that hovers, then strikes once when scrolling starts. */
 .stamp {
@@ -134,6 +135,8 @@ body { font-weight: 300; }
 
 .cta-title { font-weight: 200; font-size: clamp(48px, 7vw, 120px); line-height: 1.08; margin: 0; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
+/* The last frame parks the car in the lower half; the call sits in the empty sky above it. */
+.scene.cta-scene { align-items: flex-start; padding-top: calc(var(--header-h) + 11vh); }
 .cta-scene::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 55%, rgba(18, 12, 8, 0.7), transparent 70%); }
 
 /* ---- route tracker: desktop bottom rail, phone thin top bar ---- */
@@ -331,6 +334,14 @@ body { font-weight: 300; }
   /* Keep the light seam above the headline on phones. */
   .door-seam { background: linear-gradient(180deg, transparent, var(--champagne-hi) 12%, #fff3dc 30%, var(--champagne) 42%, transparent 52%); }
   .scene .h2 { font-size: clamp(38px, 11vw, 54px); }
+  /* The phone film keeps its car in the lower half, so scene copy reads at the top. */
+  .scene.align-start:not(.hero), .scene.align-end:not(.hero), .scene.align-center:not(.hero) {
+    align-items: flex-start; padding: calc(var(--header-h) + 44px) 20px 0;
+  }
+  .scene.align-start:not(.hero)::before, .scene.align-end:not(.hero)::before, .scene.align-center:not(.hero)::before {
+    inset: 0 0 42% 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 90%, transparent) 35%, transparent);
+  }
+  .scene.cta-scene { padding-top: calc(var(--header-h) + 44px); }
   .cta-title { font-size: clamp(40px, 12vw, 58px); }
   .cta-row { flex-direction: column; align-items: stretch; }
   .cta-row .btn { justify-content: space-between; }

@@ -33,7 +33,7 @@ export async function initLanding(options = {}) {
     frameRange: [4, 70],     // progress % over which the sequence plays
     imageScale: 0.9,         // < 1 leaves a padded border filled with bg
     length: { desktop: 900, mobile: 650 }, // container height in vh
-    wipe: "circle",          // circle | rise | none
+    wipe: "circle",          // circle | rise | doors | none
     porthole: { desktop: [19, 27, 54], mobile: [26, 50, 30] }, // [radius %, x %, y %] at scroll 0
     blend: false,            // cross-fade between neighbouring frames for a smoother scrub
     // "cover" fills the screen and crops the sides on tall phones; "width" keeps the full
@@ -54,6 +54,9 @@ export async function initLanding(options = {}) {
   const dim = document.getElementById("dim");
   const progressBar = document.querySelector("[data-progress-bar]");
   const sceneIndex = document.querySelector("[data-scene-index]");
+  // "doors" wipe: the frames sit uncut behind two page-supplied door leaves.
+  const doors = [...document.querySelectorAll("[data-door]")].map((el) => ({ el, dir: el.dataset.door === "left" ? -1 : 1 }));
+  if (config.wipe === "doors") canvasWrap.style.clipPath = "none";
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const isMobile = window.matchMedia(MOBILE_QUERY).matches;
@@ -291,6 +294,12 @@ export async function initLanding(options = {}) {
       const edge = (1 - eased) * from;
       canvasWrap.style.clipPath = `inset(${edge.toFixed(2)}% 0 0 0)`;
       root.style.setProperty("--wipe-edge", edge.toFixed(2));
+    } else if (config.wipe === "doors") {
+      // Two door leaves ([data-door="left"|"right"], supplied by the page) slide apart from the centre
+      // over the frames; --doors (0 closed, 1 open) lets the page fade the light seam and hero copy.
+      doors.forEach(({ el, dir }) => { el.style.transform = `translate3d(${(dir * eased * 101).toFixed(2)}%,0,0)`; });
+      root.style.setProperty("--doors", eased.toFixed(4));
+      root.classList.toggle("doors-open", eased >= 1);
     } else {
       canvasWrap.style.opacity = eased;
     }

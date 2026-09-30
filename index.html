@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#120c08">
+  <title>رادکارسل: واردات و ترخیص خودرو منطقه آزاد انزلی</title>
+  <meta name="description" content="رادکارسل: واردات خودروهای پلاک منطقه آزاد و ترخیص خودرو از گمرک. گیلان، رشت، بازدید با هماهنگی قبلی.">
+  <link rel="preload" href="shared/fonts/Vazirmatn-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="shared/vendor/lenis.css">
+  <link rel="stylesheet" href="shared/css/base.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader" aria-hidden="true">
+    <div class="loader-brand">RADCARSELL</div>
+    <div class="loader-track"><div class="loader-bar" data-loader-bar></div></div>
+    <div class="loader-percent"><span data-loader-percent>۰</span>٪</div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="رادکارسل"><span class="brand-word">RADCARSELL</span><span class="brand-sub">Premium Car Import</span></a>
+    <nav aria-label="بخش‌ها">
+      <a href="#services">خدمات</a>
+      <a href="#inventory">موجودی خودرو</a>
+      <a href="#notes">نکات مهم</a>
+    </nav>
+    <a class="btn line header-cta" href="#inquiry">استعلام خودرو</a>
+  </header>
+
+  <div class="canvas-wrap" aria-hidden="true"><canvas id="frame-canvas"></canvas></div>
+  <div id="dim" aria-hidden="true"></div>
+  <div class="doors" aria-hidden="true">
+    <div class="door door-r" data-door="right"></div>
+    <div class="door door-l" data-door="left"></div>
+    <div class="door-seam"></div>
+  </div>
+
+  <!-- Route tracker: lights up with the scroll, names only. -->
+  <nav class="tracker is-hidden" aria-label="مسیر خرید">
+    <ol>
+      <li data-at="0.10"><i></i><span>مشاوره</span></li>
+      <li data-at="0.26"><i></i><span>خرید</span></li>
+      <li data-at="0.44"><i></i><span>کارشناسی</span></li>
+      <li data-at="0.62"><i></i><span>ترخیص</span></li>
+      <li data-at="0.80"><i></i><span>تحویل</span></li>
+    </ol>
+    <div class="tracker-bar"><span></span></div>
+  </nav>
+
+  <main id="top">
+    <div class="stage">
+      <section class="scene hero" data-enter="0" data-leave="4" data-anim="blur-in">
+        <div class="scene-inner">
+          <h1 class="hero-title" data-reveal>از بندر<br>تا پلاک</h1>
+          <p class="hero-sub" data-reveal>از انتخاب تا تحویل، در کنار شما هستیم.</p>
+          <div class="hero-cta" data-reveal>
+            <a class="btn" href="#inquiry">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+            <a class="btn line" href="#inventory">موجودی خودرو</a>
+          </div>
+        </div>
+        <span class="stamp" role="img" aria-label="برای دیدن ادامه اسکرول کنید"><span class="serif">RC</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      </section>
+
+      <section class="scene align-start" data-enter="10" data-leave="24" data-anim="blur-in">
+        <div class="scene-inner">
+          <h2 class="h2" data-reveal>خرید خودرو<br>با اطمینان</h2>
+          <p class="lead" data-reveal>از مشاوره تا خرید و واردات خودروی موردنظر شما</p>
+        </div>
+      </section>
+
+      <section class="scene align-end" data-enter="28" data-leave="42" data-anim="blur-in">
+        <div class="scene-inner">
+          <h2 class="h2" data-reveal>واردات خودرو<br>از کشورهای همسایه</h2>
+          <p class="lead" data-reveal>خودروی موردنظر شما را از بهترین بازارهای منطقه وارد و با اطمینان تحویل می‌دهیم.</p>
+        </div>
+      </section>
+
+      <section class="scene align-start" data-enter="46" data-leave="60" data-anim="blur-in">
+        <div class="scene-inner">
+          <h2 class="h2" data-reveal>هیچ ارزونی<br>بی دلیل نیست</h2>
+          <p class="lead" data-reveal>بررسی و کارشناسی دقیق خودرو</p>
+        </div>
+      </section>
+
+      <section class="scene align-end" data-enter="64" data-leave="78" data-anim="blur-in">
+        <div class="scene-inner">
+          <h2 class="h2" data-reveal>ترخیص خودرو<br>از گمرک</h2>
+          <p class="lead" data-reveal>در سریع‌ترین زمان</p>
+        </div>
+      </section>
+
+      <section class="scene align-center cta-scene" data-enter="84" data-leave="100" data-anim="fade-up" data-persist="true">
+        <div class="scene-inner">
+          <h2 class="cta-title" data-reveal>واردات مطمئن<br>با تیم رادکارسل</h2>
+          <div class="cta-row" data-reveal>
+            <a class="btn" href="#inquiry">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+            <a class="btn line" href="#services">خدمات رادکارسل</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="scroll-container" aria-hidden="true"></div>
+
+    <div class="after">
+      <section class="statement" aria-label="چرا رادکارسل">
+        <div class="wrap">
+          <p data-rise>ما فقط خودرو نمی‌فروشیم، <span>اعتماد و آرامش خاطر</span> را برای شما فراهم می‌کنیم.</p>
+          <ul class="why" data-rise>
+            <li>مشاوره صادقانه و تخصصی</li>
+            <li>بررسی و کارشناسی دقیق خودرو</li>
+            <li>دسترسی به بهترین بازارهای داخل و خارج از کشور</li>
+            <li>صرفه‌جویی در زمان و هزینه</li>
+            <li>همراهی از انتخاب تا تحویل خودرو</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="services" id="services" aria-labelledby="services-title">
+        <div class="wrap services-grid">
+          <figure data-rise><img src="assets/img/detail-portrait.jpg" alt="" loading="lazy" width="576" height="720"></figure>
+          <div>
+            <h2 class="h2" id="services-title" data-rise>از اقتصادی تا لوکس،<br>خرید سفارشی با رادکارسل</h2>
+            <ul class="svc">
+              <li data-rise><h3>خرید خودرو با اطمینان</h3><p>از مشاوره تا خرید و واردات خودروی موردنظر شما</p></li>
+              <li data-rise><h3>خودروی دلخواهت رو پیدا می‌کنیم</h3><p>بر اساس بودجه، سلیقه و نیاز شما: جستجو و بررسی بازار، کارشناسی و استعلام، مذاکره و خرید، تحویل خودرو با اطمینان</p></li>
+              <li data-rise><h3>خودروهای آماده فروش</h3><p>فروش خودروهای موجود در نمایشگاه‌های معتبر همکار. قابل بازدید حضوری، کارشناسی شده قبل از فروش.</p></li>
+              <li data-rise><h3>واردات خودرو از کشورهای همسایه</h3><p>انتخاب مطمئن از بازارهای معتبر، بررسی و کارشناسی دقیق خودرو، انجام کلیه مراحل خرید و ترخیص</p></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="port" aria-labelledby="port-title">
+        <img src="assets/img/port.jpg" alt="" loading="lazy" width="1280" height="720">
+        <div class="wrap port-copy">
+          <h2 class="h2" id="port-title" data-rise>از بهترین بازارهای منطقه</h2>
+          <ul class="countries" data-rise>
+            <li>امارات</li><li>عمان</li><li>کویت</li><li>عراق</li><li>گرجستان</li>
+            <li class="soon">چین تا انزلی، در حال راه‌اندازی</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="route" aria-labelledby="route-title">
+        <div class="wrap">
+          <h2 class="h2" id="route-title" data-rise>از مشاوره برای خرید،<br>تا تحویل خودرو</h2>
+          <ol class="steps" data-rise>
+            <li><b>۱</b><i></i><span>مشاوره</span></li>
+            <li><b>۲</b><i></i><span>خرید</span></li>
+            <li><b>۳</b><i></i><span>کارشناسی</span></li>
+            <li><b>۴</b><i></i><span>ترخیص</span></li>
+            <li><b>۵</b><i></i><span>تحویل</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="inventory" id="inventory" aria-labelledby="inv-title">
+        <div class="wrap">
+          <h2 class="h2" id="inv-title" data-rise>موجودی خودرو</h2>
+          <p class="section-lead" data-rise>نمونه از موجودی‌های قبلی. موجودی فعلی: <span class="pending">در انتظار اطلاعات</span></p>
+        </div>
+        <ul class="tags" data-rise>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>لکسوس GX460</h3><b>مدل ۲۰۲۱</b><p>بی‌رنگ، فول، رادار</p></li>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>تویوتا سوپرا</h3><b>مدل ۲۰۲۲</b><p>بی‌رنگ</p></li>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>مرسدس C300</h3><b>مدل ۲۰۱۶</b><p>کارکرد ۹۵ هزار، بدنه بدون رنگ</p></li>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>بی‌ام‌و Z4</h3><b>مدل ۲۰۱۶</b><p>حس خیلی خوبی هم داره نشستن پشت فرمونش</p></li>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>تویوتا اف‌جی</h3><b>مدل ۲۰۱۹</b><p>یه لکه آبرنگ</p></li>
+          <li class="tag"><span class="tag-hole"></span><span class="tag-stamp">نمونه</span><h3>میتسوبیشی پاجرو</h3><b>مدل ۲۰۱۷</b><p>بی‌رنگ، کارکرد ۶۴ هزار</p></li>
+        </ul>
+      </section>
+
+      <section class="plates" aria-labelledby="plates-title">
+        <div class="wrap plates-inner">
+          <h2 class="h2" id="plates-title" data-rise>پلاک گذر و دائم</h2>
+          <div data-rise>
+            <p>فرق پلاک گذر، پلاک دائم منطقه آزاد و پلاک ملی، و محدوده تردد هرکدام.</p>
+            <span class="pending">در انتظار اطلاعات</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="notes" id="notes" aria-labelledby="notes-title">
+        <div class="wrap">
+          <h2 class="h2" id="notes-title" data-rise>نکات مهم</h2>
+          <div class="tabs" role="tablist" aria-label="نکات مهم" data-rise>
+            <button role="tab" id="tab-law" aria-controls="panel-law" aria-selected="true">واردات شخصی</button>
+            <button role="tab" id="tab-check" aria-controls="panel-check" aria-selected="false" tabindex="-1">کارشناسی قبل از خرید</button>
+            <button role="tab" id="tab-ads" aria-controls="panel-ads" aria-selected="false" tabindex="-1">آگهی‌ها</button>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-law" aria-labelledby="tab-law">
+            <h3>آیا واردات شخصی خودرو ممنوع شده؟</h3>
+            <p class="answer">خیر، واردات شخصی ممنوع نشده.</p>
+            <div class="methods">
+              <div><h4>روش اول، توسط شرکت‌ها</h4><p>خرید خودرو در خارج از کشور، انتقال به اسم شرکت، تشریفات اداری و شماره‌گذاری در گمرک توسط شرکت، وکالت به شخص خریدار، تعویض پلاک به اسم خریدار.</p></div>
+              <div><h4>روش دوم، توسط اشخاص</h4><p>خرید خودرو در خارج از کشور، ارسال توسط شرکت حمل و نقل، ورود به گمرک منطقه آزاد. ترخیص و شماره‌گذاری و کارهای اداری را خودت انجام می‌دهی و پلاک به اسم خودت می‌گیری.</p></div>
+            </div>
+            <p>از یکم شهریور، روش دوم قراره حذف بشه. قرار نیست واردات شخصی ممنوع بشه، فقط شخص دیگه نمی‌تونه تشریفات اداری و ترخیص و… رو خودش انجام بده.</p>
+            <p class="dated">از پست رسمی رادکارسل، حدود تیر ۱۴۰۵. قانون خودرو مرتب تغییر می‌کند.</p>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-check" aria-labelledby="tab-check" hidden>
+            <h3>هیچ ارزونی بی دلیل نیست</h3>
+            <p>مشتری آگهی یک نیسان روگ SL ۲۰۲۳ در امارات فرستاد. کارشناس رادکارسل در امارات خودرو را بررسی کرد و در چهار ویدیو گزارش داد. معلوم شد جزو خودروهای سیل‌زده بوده.</p>
+            <blockquote>«تو بازار خودروی امارات ۱۰۰ درصد هیچ ارزونی بی دلیل نیست.»</blockquote>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-ads" aria-labelledby="tab-ads" hidden>
+            <h3>آگهی‌ها ملاک تصمیم نیستند</h3>
+            <blockquote>«نه آگهی‌های توی دیوار در ایران و نه آگهی‌های دبی‌کارز و دبیزل و یالاموتور و کارسوق و ... ملاک مناسبی برای تصمیم‌گیری شما نیستن، فقط میشه ازشون استفاده کرد.»</blockquote>
+            <p>«البته حتما توشون خودروهای مناسب و سالم هم زیاد پیدا میشه ولی با قیمت معقول.»</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="inquiry" id="inquiry" aria-labelledby="inquiry-title">
+        <div class="wrap inquiry-grid">
+          <div>
+            <h2 class="h2" id="inquiry-title" data-rise>دنبال خرید<br>خودرو هستی؟</h2>
+            <p class="section-lead" data-rise>برای مشاوره رایگان و بررسی گزینه‌های مناسب بودجه‌ات با ما در ارتباط باش.</p>
+          </div>
+          <form class="lead-form shell" data-rise novalidate>
+            <div class="plate">
+              <div class="plate-head"><b>استعلام خودرو</b><span class="serif">RADCARSELL</span></div>
+              <div class="fields">
+                <label>مدل دلخواه<input name="model" required placeholder="مثلاً لکسوس GX460"></label>
+                <label>سال<input name="year" inputmode="numeric" placeholder="سال ساخت" data-digits></label>
+                <label>بودجه (اختیاری)<input name="budget" placeholder="بودجه تقریبی"></label>
+                <label>شهر<input name="city" required autocomplete="address-level2" placeholder="شهر خود را وارد کنید"></label>
+              </div>
+              <fieldset>
+                <legend>نوع پلاک</legend>
+                <label class="chip"><input type="radio" name="plate" value="گذر" checked><span>گذر</span></label>
+                <label class="chip"><input type="radio" name="plate" value="دائم منطقه آزاد"><span>دائم منطقه آزاد</span></label>
+                <label class="chip"><input type="radio" name="plate" value="ملی"><span>ملی</span></label>
+              </fieldset>
+              <label class="phone">شماره همراه<input name="phone" required inputmode="tel" autocomplete="tel" pattern="0?9[0-9]{9}" placeholder="شماره خود را وارد کنید" data-digits dir="ltr"></label>
+              <button class="btn" type="submit">ارسال در واتساپ <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></button>
+              <p class="form-sent" role="status">واتساپ باز شد؛ پیام را ارسال کنید.</p>
+              <span class="seal serif" aria-hidden="true">RC</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="visit" aria-label="تماس و بازدید">
+        <div class="visit-perf" aria-hidden="true"></div>
+        <div class="wrap visit-inner">
+          <p class="visit-where">گیلان، رشت، بازدید با هماهنگی قبلی</p>
+          <div class="visit-links">
+            <a class="btn line" href="tel:+989119842354">تماس <span class="serif">0911 984 2354</span></a>
+            <a class="btn line" href="https://wa.me/989119842354" target="_blank" rel="noopener">واتساپ</a>
+            <a class="btn line" href="https://www.instagram.com/radcarsell_/" target="_blank" rel="noopener">اینستاگرام <span class="serif">@radcarsell_</span></a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="wrap footer-inner">
+          <p class="footer-concept">این صفحه یک کانسپت است.</p>
+          <div class="credit">
+            <span class="credit-name">طراحی و توسعه: احسان ملائی <span class="serif">Ehsan Mollae</span></span>
+            <div class="credit-links">
+              <a href="tel:+989395115582" dir="ltr">0939 511 5582</a>
+              <a href="https://t.me/Ehsanmolae" target="_blank" rel="noopener" dir="ltr">@Ehsanmolae</a>
+              <a href="mailto:ehsanmollae@gmail.com" dir="ltr">ehsanmollae@gmail.com</a>
+            </div>
+          </div>
+          <p class="footer-ai">تصاویر و ویدیوی این نمونه با هوش مصنوعی ساخته شده‌اند.</p>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script src="shared/vendor/lenis.min.js"></script>
+  <script src="shared/vendor/gsap.min.js"></script>
+  <script src="shared/vendor/ScrollTrigger.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

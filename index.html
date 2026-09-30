@@ -37,8 +37,8 @@
     <div class="door-seam"></div>
   </div>
 
-  <!-- Route tracker: lights up with the scroll, names only. -->
-  <nav class="tracker is-hidden" aria-label="مسیر خرید">
+  <!-- Route tracker: lights up with the scroll, names only. The route section repeats it for assistive tech. -->
+  <div class="tracker is-hidden" aria-hidden="true">
     <ol>
       <li data-at="0.10"><i></i><span>مشاوره</span></li>
       <li data-at="0.26"><i></i><span>خرید</span></li>
@@ -47,7 +47,7 @@
       <li data-at="0.80"><i></i><span>تحویل</span></li>
     </ol>
     <div class="tracker-bar"><span></span></div>
-  </nav>
+  </div>
 
   <main id="top">
     <div class="stage">
@@ -187,7 +187,7 @@
           <h2 class="h2" id="notes-title" data-rise>نکات مهم</h2>
           <div class="tabs" role="tablist" aria-label="نکات مهم" data-rise>
             <button role="tab" id="tab-law" aria-controls="panel-law" aria-selected="true">واردات شخصی</button>
-            <button role="tab" id="tab-check" aria-controls="panel-check" aria-selected="false" tabindex="-1">کارشناسی قبل از خرید</button>
+            <button role="tab" id="tab-check" aria-controls="panel-check" aria-selected="false" tabindex="-1">کارشناسی</button>
             <button role="tab" id="tab-ads" aria-controls="panel-ads" aria-selected="false" tabindex="-1">آگهی‌ها</button>
           </div>
           <div class="panel" role="tabpanel" id="panel-law" aria-labelledby="tab-law">

@@ -4,225 +4,196 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
-  <title>راد کارسل: نمونه رنگ و فونت، نسخه ۲</title>
+  <title>راد کارسل: نمونه رنگ و فونت، نسخه ۳</title>
   <link rel="stylesheet" href="../shared/css/base.css">
   <style>
-    /* Rad Carsell v2, "showroom after dark": piano-black lacquer, platinum chrome, one warm metal accent.
-       The accent is switchable (?accent=copper | red | platinum) only on this sample page. */
+    /* Rad Carsell v3: the brand's own palette, sampled from its Instagram graphics (brand/images).
+       Light cream ground, very dark brown ink, gold and bronze accents. Luxurious, light, calm. */
     :root {
-      --bg: #09090a;             /* piano black */
-      --lacquer: #121214;        /* raised surfaces */
-      --lacquer-hi: #1b1b1e;
-      --platinum: #dcdde0;       /* text and chrome */
-      --platinum-lo: #8d9096;
-      --muted: #8f9197;
-      --hair: rgba(220, 221, 224, 0.12);
-      --hair-strong: rgba(220, 221, 224, 0.24);
-      --accent: #c8875a;         /* copper */
-      --accent-hi: #e3a980;
-      --accent-lo: #9a5d35;
-      --accent-glow: rgba(200, 135, 90, 0.45);
-      --leather: #2a1a12;        /* cognac-black leather for inventory tags */
-      --leather-hi: #3a2519;
+      --cream: #f7f1e7;        /* page ground        (sampled: post 01, highlight "kharid") */
+      --ivory: #fbf8f2;        /* raised plates */
+      --sand: #eae1d5;         /* secondary ground   (sampled: post 01) */
+      --espresso: #271c13;     /* ink                (sampled: post 01) */
+      --chocolate: #41230f;    /* bottom bar         (sampled: post 01 footer band) */
+      --gold: #bd996a;         /* logo and headline gold (sampled: highlight "kharid" 01, 03) */
+      --gold-hi: #dcc39a;
+      --gold-lo: #9c7a4c;
+      --bronze: #8b623f;       /* accent text on cream (sampled: post 12), 4.8:1 on cream */
+      --muted: #6f6358;        /* secondary text, 5.2:1 on cream */
+      --hair: rgba(39, 28, 19, 0.12);
+      --hair-gold: rgba(189, 153, 106, 0.45);
+      --bg: var(--cream);
+      --ink: var(--espresso);
+      --accent: var(--gold);
       --font-display: "Vazirmatn", system-ui, sans-serif;
-      --font-latin: "Syncopate", "Vazirmatn", sans-serif;
-      --r-surface: 4px;          /* cards, panels, inputs */
-      --r-control: 999px;        /* buttons, tabs, chips */
+      --font-latin: "Jost", "Vazirmatn", sans-serif;
+      --r-surface: 18px;       /* cards and panels: soft, like their graphics */
+      --r-control: 999px;      /* buttons, tabs, chips */
       --spring: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    :root[data-accent="red"] { --accent: #c4162a; --accent-hi: #e2475a; --accent-lo: #8e0d1d; --accent-glow: rgba(196, 22, 42, 0.45); }
-    :root[data-accent="platinum"] { --accent: #b9bcc2; --accent-hi: #eceef1; --accent-lo: #7e8187; --accent-glow: rgba(236, 238, 241, 0.3); }
+    body { background: var(--cream); color: var(--espresso); font-weight: 400; }
+    .wrap { width: min(1200px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+    .latin { font-family: var(--font-latin); direction: ltr; }
+    .pending {
+      display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: var(--r-control);
+      font-size: 13px; font-weight: 500; color: var(--bronze); background: rgba(189, 153, 106, 0.1);
+      box-shadow: inset 0 0 0 1px var(--hair-gold); border: 1px dashed transparent;
+    }
+    .pending::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
-    body { font-weight: 300; color: var(--platinum); background: var(--bg); }
-    .wrap { width: min(1240px, 100% - 2 * var(--gutter)); margin-inline: auto; }
-    .latin { font-family: var(--font-latin); direction: ltr; text-transform: uppercase; }
+    /* ---- header ---- */
+    .site-header { background: linear-gradient(180deg, rgba(20, 14, 9, 0.55), transparent); color: var(--cream); }
+    .brand { display: grid; gap: 2px; text-decoration: none; }
+    .brand-word { font-family: var(--font-latin); font-weight: 400; font-size: 15px; letter-spacing: 0.42em; direction: ltr; margin-right: -0.42em; }
+    .brand-sub { font-family: var(--font-latin); font-size: 8.5px; letter-spacing: 0.34em; direction: ltr; opacity: 0.75; }
+    .site-header nav a { color: var(--cream); }
 
-    /* ---- hero mock: closed container doors, a warm seam of light ---- */
-    .hero { position: relative; min-height: 100dvh; overflow: hidden; display: grid; align-items: end; }
-    .hero-bg { position: absolute; inset: 0; }
+    /* ---- hero mock: golden-hour port behind bronze container doors (placeholder until the video) ---- */
+    .hero { position: relative; min-height: 100dvh; overflow: hidden; display: grid; align-items: end; color: var(--cream); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #3b2718 0%, #8a5a33 38%, #d7a66a 58%, #f0cf98 64%, #6d4a30 65%, #2b1d12 100%); }
     .hero-door {
       position: absolute; top: 0; bottom: 0; width: 50%;
       background:
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 38px, rgba(0, 0, 0, 0.35) 38px 40px, transparent 40px 58px),
-        linear-gradient(180deg, #1c1d20 0%, #131416 55%, #0b0b0c 100%);
+        repeating-linear-gradient(90deg, rgba(255, 240, 220, 0.05) 0 1px, transparent 1px 40px, rgba(0, 0, 0, 0.28) 40px 42px, transparent 42px 60px),
+        linear-gradient(180deg, #3a2a1d 0%, #2a1e14 60%, #1c140d 100%);
     }
-    .hero-door.l { left: 0; transform: translateX(-2.2%); }
-    .hero-door.r { right: 0; transform: translateX(2.2%); }
-    .hero-door::after { content: ""; position: absolute; top: 12%; bottom: 14%; width: 3px; border-radius: 2px; background: linear-gradient(180deg, #5a5d63, #2a2b2f); }
-    .hero-door.l::after { right: 16%; }
-    .hero-door.r::after { left: 16%; }
-    .hero-seam {
-      position: absolute; top: 0; bottom: 0; left: 50%; width: 4.4%; transform: translateX(-50%);
-      background: radial-gradient(40% 60% at 50% 62%, var(--accent-hi), var(--accent) 35%, var(--accent-lo) 60%, transparent 100%);
-      filter: blur(6px); opacity: 0.9;
-    }
-    .hero-bg::after {
-      content: ""; position: absolute; inset: 0;
-      background:
-        radial-gradient(38% 48% at 50% 60%, var(--accent-glow), transparent 70%),
-        linear-gradient(180deg, rgba(9, 9, 10, 0.2), transparent 30%, rgba(9, 9, 10, 0.55) 70%, var(--bg));
-    }
-    .site-header { background: linear-gradient(180deg, rgba(9, 9, 10, 0.7), transparent); }
-    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-    .brand-mark {
-      width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
-      font-family: var(--font-latin); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; direction: ltr;
-      color: var(--platinum); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      background: radial-gradient(80% 80% at 30% 20%, #26262a, #0f0f11);
-    }
-    .brand-word { font-family: var(--font-latin); font-size: 13px; letter-spacing: 0.42em; direction: ltr; }
-    .site-header nav a { font-weight: 400; opacity: 0.7; }
+    .hero-door.l { left: 0; transform: translateX(-14%); box-shadow: inset -2px 0 0 rgba(220, 195, 154, 0.35); }
+    .hero-door.r { right: 0; transform: translateX(14%); box-shadow: inset 2px 0 0 rgba(220, 195, 154, 0.35); }
+    .hero-door::after { content: ""; position: absolute; top: 12%; bottom: 14%; width: 3px; border-radius: 2px; background: linear-gradient(180deg, var(--gold-hi), var(--gold-lo)); opacity: 0.6; }
+    .hero-door.l::after { right: 18%; }
+    .hero-door.r::after { left: 18%; }
+    .hero-bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(30% 40% at 50% 60%, rgba(240, 207, 152, 0.35), transparent 70%), linear-gradient(180deg, rgba(20, 14, 9, 0.1), transparent 35%, rgba(20, 14, 9, 0.55) 72%, rgba(20, 14, 9, 0.85)); }
     .hero-copy { position: relative; padding: 0 0 clamp(56px, 10vh, 110px); }
-    .hero-kicker { font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.5em; color: var(--platinum-lo); direction: ltr; text-align: right; margin: 0 -0.5em 22px 0; }
-    .hero-title { font-family: var(--font-display); font-weight: 200; font-size: clamp(60px, 11vw, 176px); line-height: 0.98; margin: 0; letter-spacing: 0; }
-    .hero-title b { font-weight: 600; }
-    .hero-sub { margin: 26px 0 0; max-width: 38ch; font-size: clamp(16px, 1.3vw, 19px); color: #b9bbc0; line-height: 1.9; }
+    .hero-kicker { font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.42em; color: var(--gold-hi); direction: ltr; text-align: right; margin: 0 -0.42em 20px 0; }
+    .hero-title { font-family: var(--font-display); font-weight: 300; font-size: clamp(58px, 10vw, 160px); line-height: 1; margin: 0; }
+    .hero-title b { font-weight: 800; color: var(--gold-hi); }
+    .hero-sub { margin: 24px 0 0; font-size: clamp(17px, 1.4vw, 21px); font-weight: 300; color: #f1e6d6; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 
-    /* ---- buttons: platinum chrome pill, sheen, icon in a ring ---- */
+    /* ---- buttons: gold leaf pill with a lit edge, sheen, icon in its own circle ---- */
     .btn {
       position: relative; isolation: isolate; overflow: hidden;
       gap: 16px; padding: 8px 28px; min-height: 54px; border-radius: var(--r-control);
-      background: linear-gradient(180deg, #f4f5f7 0%, #d4d6da 48%, #b3b6bc 52%, #d9dbdf 100%);
-      color: #0c0c0e; font-weight: 600; font-size: 15px;
-      box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 18px 40px -20px rgba(220, 221, 224, 0.45);
+      background: linear-gradient(180deg, #e8d3ad 0%, var(--gold) 55%, #a8845a 100%);
+      color: var(--espresso); font-weight: 700; font-size: 15px;
+      box-shadow: inset 0 1px 0 rgba(255, 250, 240, 0.8), inset 0 -1px 0 rgba(65, 35, 15, 0.25), 0 16px 34px -18px rgba(139, 98, 63, 0.75);
       transition: transform 0.5s var(--spring), box-shadow 0.5s var(--spring);
     }
     .btn::after {
       content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-      background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.85) 50%, transparent 68%);
+      background: linear-gradient(105deg, transparent 32%, rgba(255, 252, 245, 0.7) 50%, transparent 68%);
       transform: translateX(120%); transition: transform 1s var(--spring);
     }
     .btn:hover { transform: translateY(-2px); }
     .btn:hover::after { transform: translateX(-120%); }
     .btn:active { transform: translateY(0) scale(0.97); }
     .btn:has(.btn-icon) { padding-inline-end: 7px; }
-    .btn-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #0c0c0e; color: var(--accent-hi); transition: transform 0.5s var(--spring); }
+    .btn-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--espresso); color: var(--gold-hi); transition: transform 0.5s var(--spring); }
     .btn-icon svg { width: 17px; height: 17px; }
     .btn:hover .btn-icon { transform: translateX(-3px); }
-    .btn.ghost {
-      background: rgba(9, 9, 10, 0.35); color: var(--platinum);
-      box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-    }
-    .btn.ghost::after { background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.14) 50%, transparent 68%); }
-    .btn.ghost .btn-icon { background: transparent; box-shadow: inset 0 0 0 1px var(--hair-strong); color: var(--platinum); }
+    .btn.dark { background: linear-gradient(180deg, #56331b, var(--chocolate) 60%, #2e180a); color: var(--cream); box-shadow: inset 0 1px 0 rgba(255, 230, 200, 0.18), 0 16px 34px -18px rgba(65, 35, 15, 0.8); }
+    .btn.dark::after { background: linear-gradient(105deg, transparent 32%, rgba(220, 195, 154, 0.3) 50%, transparent 68%); }
+    .btn.dark .btn-icon { background: rgba(247, 241, 231, 0.1); box-shadow: inset 0 0 0 1px var(--hair-gold); }
+    .btn.ghost-light { background: rgba(247, 241, 231, 0.08); color: var(--cream); box-shadow: inset 0 0 0 1px rgba(220, 195, 154, 0.6); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+    .btn.ghost-light::after { background: linear-gradient(105deg, transparent 32%, rgba(220, 195, 154, 0.25) 50%, transparent 68%); }
 
-    /* ---- sample page sections ---- */
-    section.block { padding: clamp(72px, 10vw, 128px) 0; border-top: 1px solid var(--hair); }
-    .block-title { font-family: var(--font-display); font-weight: 300; font-size: clamp(30px, 3.6vw, 48px); margin: 0 0 8px; }
-    .note { color: var(--muted); font-size: 14px; margin: 0 0 40px; max-width: 64ch; line-height: 1.9; }
+    /* ---- sample sections ---- */
+    section.block { padding: clamp(72px, 10vw, 120px) 0; border-top: 1px solid var(--hair); }
+    .block-title { font-weight: 800; font-size: clamp(28px, 3.4vw, 44px); margin: 0 0 8px; }
+    .note { color: var(--muted); font-size: 14px; margin: 0 0 36px; max-width: 66ch; line-height: 1.9; }
 
-    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
-    .sw { background: var(--bg); padding: 14px; display: grid; gap: 12px; }
-    .sw-chip { height: 120px; border-radius: 2px; }
-    .sw b { font-weight: 500; font-size: 15px; }
-    .sw code { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.2em; color: var(--muted); direction: ltr; text-align: right; }
-    .sw div.m { display: grid; gap: 4px; }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+    .sw { background: var(--ivory); border-radius: var(--r-surface); padding: 8px; box-shadow: inset 0 0 0 1px var(--hair); }
+    .sw-chip { height: 110px; border-radius: 12px; }
+    .sw .m { padding: 12px 8px 6px; display: grid; gap: 2px; }
+    .sw b { font-weight: 700; font-size: 15px; }
+    .sw code { font-family: var(--font-latin); font-size: 12px; letter-spacing: 0.12em; color: var(--muted); direction: ltr; text-align: right; }
+    .sw small { font-size: 12px; color: var(--muted); }
 
-    .type-grid { display: grid; gap: 56px; }
-    .spec { display: grid; gap: 12px; }
-    .spec small { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.3em; color: var(--muted); direction: ltr; text-align: right; }
-    .t-display { font-weight: 200; font-size: clamp(56px, 9vw, 140px); line-height: 1; margin: 0; }
-    .t-display b { font-weight: 600; }
-    .t-h2 { font-weight: 300; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.15; margin: 0; }
-    .t-latin {
-      font-family: var(--font-latin); font-weight: 400; font-size: clamp(26px, 5.4vw, 76px); letter-spacing: 0.32em; margin: 0; direction: ltr; text-align: right;
-      background: linear-gradient(180deg, #ffffff 0%, #c9cbd0 45%, #7f828a 52%, #d8dade 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .t-body { font-weight: 300; font-size: 18px; line-height: 2; max-width: 52ch; margin: 0; color: #c6c8cc; }
-    .t-small { font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.34em; color: var(--accent-hi); margin: 0; direction: ltr; text-align: right; }
+    .type-grid { display: grid; gap: 52px; }
+    .spec { display: grid; gap: 10px; }
+    .spec small { font-family: var(--font-latin); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); direction: ltr; text-align: right; }
+    .t-display { font-weight: 300; font-size: clamp(46px, 7.4vw, 112px); line-height: 1.08; margin: 0; }
+    .t-display b { font-weight: 800; color: var(--bronze); }
+    .t-h2 { font-weight: 800; font-size: clamp(32px, 4vw, 56px); line-height: 1.2; margin: 0; }
+    .t-latin { font-family: var(--font-latin); font-weight: 300; font-size: clamp(30px, 5.6vw, 84px); letter-spacing: 0.36em; margin: 0 -0.36em 0 0; direction: ltr; text-align: right; color: var(--gold-lo); }
+    .t-latin-sub { font-family: var(--font-latin); font-weight: 400; font-size: clamp(11px, 1.2vw, 15px); letter-spacing: 0.5em; margin: 0 -0.5em 0 0; direction: ltr; text-align: right; color: var(--espresso); }
+    .t-body { font-weight: 400; font-size: 18px; line-height: 2; max-width: 52ch; margin: 0; }
+    .t-num { font-family: var(--font-latin); font-size: 22px; letter-spacing: 0.08em; margin: 0; direction: ltr; text-align: right; font-feature-settings: "tnum"; }
 
     .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-    .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: var(--r-control); box-shadow: inset 0 0 0 1px var(--hair-strong); }
-    .tabs button { border: 0; background: none; cursor: pointer; padding: 10px 22px; border-radius: var(--r-control); color: var(--muted); font-size: 15px; white-space: nowrap; }
-    .tabs button[aria-selected="true"] { background: linear-gradient(180deg, #f4f5f7, #cfd1d5); color: #0c0c0e; font-weight: 600; box-shadow: inset 0 1px 0 #fff; }
+    .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: var(--r-control); background: var(--ivory); box-shadow: inset 0 0 0 1px var(--hair); }
+    .tabs button { border: 0; background: none; cursor: pointer; padding: 10px 20px; border-radius: var(--r-control); color: var(--muted); font-size: 15px; white-space: nowrap; }
+    .tabs button[aria-selected="true"] { background: var(--espresso); color: var(--cream); font-weight: 600; box-shadow: inset 0 1px 0 rgba(255, 230, 200, 0.15); }
 
-    /* ---- double frame: brushed-metal tray + lacquer plate, the "manifest" ---- */
-    .shell {
-      padding: 1px; border-radius: 10px;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.16));
-      box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
-    }
-    .shell-inner { padding: 7px; border-radius: 9px; background: #0d0d0f; }
-    .manifest {
-      position: relative; border-radius: 6px; padding: clamp(26px, 3.4vw, 42px);
-      background: radial-gradient(120% 80% at 100% 0%, rgba(255, 255, 255, 0.05), transparent 55%), linear-gradient(180deg, var(--lacquer-hi), var(--lacquer));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-    }
-    .manifest-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--hair-strong); }
-    .manifest-head b { font-weight: 300; font-size: 26px; }
-    .manifest-head span { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.3em; color: var(--muted); direction: ltr; }
-    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin: 8px 0 0; }
-    .fields div { padding: 14px 0; border-bottom: 1px solid var(--hair); }
-    .fields dt { font-size: 12px; color: var(--muted); }
-    .fields dd { margin: 4px 0 0; font-weight: 400; font-size: 17px; }
-    .barcode { height: 26px; margin-top: 26px; opacity: 0.35; background: repeating-linear-gradient(90deg, var(--platinum) 0 1px, transparent 1px 4px, var(--platinum) 4px 6px, transparent 6px 8px, var(--platinum) 8px 9px, transparent 9px 13px); }
-    .seal { /* embossed foil seal */
-      position: absolute; left: clamp(20px, 3vw, 36px); bottom: 58px; width: 78px; height: 78px; border-radius: 50%;
+    /* ---- double frame: gold hairline tray + ivory plate (the soft "bill of lading") ---- */
+    .shell { padding: 7px; border-radius: calc(var(--r-surface) + 7px); background: linear-gradient(180deg, rgba(220, 195, 154, 0.35), rgba(234, 225, 213, 0.6)); box-shadow: inset 0 0 0 1px var(--hair-gold), 0 40px 70px -40px rgba(65, 35, 15, 0.45); }
+    .plate { position: relative; border-radius: var(--r-surface); padding: clamp(24px, 3.2vw, 40px); background: linear-gradient(180deg, #fffdf8, var(--ivory)); box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(189, 153, 106, 0.18); }
+    .plate-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--hair-gold); }
+    .plate-head b { font-weight: 800; font-size: 24px; }
+    .plate-head span { font-family: var(--font-latin); font-size: 10px; letter-spacing: 0.32em; color: var(--bronze); direction: ltr; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; margin: 6px 0 0; }
+    .fields label { display: grid; gap: 4px; padding: 14px 0 10px; border-bottom: 1px solid var(--hair); font-size: 13px; color: var(--muted); }
+    .fields input { font: inherit; font-size: 16px; color: var(--espresso); background: none; border: 0; padding: 2px 0; outline: none; }
+    .fields input::placeholder { color: rgba(111, 99, 88, 0.75); }
+    .fields label:focus-within { border-bottom-color: var(--gold); }
+    .barcode { height: 22px; margin-top: 24px; opacity: 0.28; background: repeating-linear-gradient(90deg, var(--espresso) 0 1px, transparent 1px 4px, var(--espresso) 4px 6px, transparent 6px 8px, var(--espresso) 8px 9px, transparent 9px 13px); }
+    .seal { /* gold foil seal */
+      position: absolute; left: clamp(20px, 3vw, 36px); bottom: 52px; width: 76px; height: 76px; border-radius: 50%;
       display: grid; place-items: center; transform: rotate(-10deg);
-      font-family: var(--font-latin); font-weight: 700; font-size: 15px; letter-spacing: 0.08em; direction: ltr;
-      color: var(--accent-hi);
-      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.18), transparent 45%), radial-gradient(circle, var(--accent-lo), #1a1a1c 72%);
-      box-shadow: inset 0 0 0 1.5px var(--accent), inset 0 0 0 6px rgba(0, 0, 0, 0.35), inset 0 0 0 7px var(--accent-lo), 0 8px 20px -8px rgba(0, 0, 0, 0.8);
+      font-family: var(--font-latin); font-weight: 500; font-size: 17px; letter-spacing: 0.12em; direction: ltr; color: var(--chocolate);
+      background: radial-gradient(circle at 35% 28%, rgba(255, 252, 245, 0.85), transparent 42%), linear-gradient(145deg, #e8d3ad, var(--gold) 55%, #a8845a);
+      box-shadow: inset 0 0 0 2px rgba(255, 250, 240, 0.5), inset 0 0 0 6px rgba(139, 98, 63, 0.18), inset 0 0 0 7px rgba(255, 250, 240, 0.45), 0 10px 20px -10px rgba(65, 35, 15, 0.6);
     }
 
-    /* ---- inventory: stitched leather hang tag with a chrome eyelet ---- */
+    /* ---- service card with the brand's exact copy ---- */
+    .service { max-width: 560px; }
+    .service .plate { padding-top: 34px; }
+    .service h3 { margin: 0; font-weight: 800; font-size: clamp(26px, 3vw, 36px); line-height: 1.3; }
+    .service h3 span { color: var(--bronze); }
+    .service p { margin: 10px 0 20px; color: var(--muted); }
+    .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .checks li { display: flex; align-items: center; gap: 12px; }
+    .checks li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23271c13' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 12px no-repeat; }
+    .service .tagline { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid var(--hair-gold); color: var(--bronze); font-weight: 700; }
+
+    /* ---- inventory: ivory hang tag, gold eyelet, "sample" mark ---- */
     .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 300px)); gap: 28px; }
     .tag { position: relative; padding-top: 40px; }
-    .tag-cord { position: absolute; top: 0; left: 50%; width: 64px; height: 50px; margin-left: -32px; color: #6d7076; }
+    .tag-cord { position: absolute; top: 0; left: 50%; width: 64px; height: 50px; margin-left: -32px; color: var(--gold-lo); }
     .tag-body {
-      position: relative; padding: 52px 16px 20px; color: var(--platinum);
+      position: relative; padding: 50px 14px 18px;
       clip-path: polygon(24% 0, 76% 0, 100% 8%, 100% 100%, 0 100%, 0 8%);
-      background:
-        radial-gradient(140% 60% at 50% 0%, rgba(255, 255, 255, 0.07), transparent 60%),
-        repeating-radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 3px),
-        linear-gradient(180deg, var(--leather-hi), var(--leather));
-      border-radius: 0 0 8px 8px;
+      background: linear-gradient(180deg, #fffdf8, var(--ivory)); border-radius: 0 0 var(--r-surface) var(--r-surface);
+      filter: drop-shadow(0 18px 24px rgba(65, 35, 15, 0.14));
     }
-    .tag-body::after { /* saddle stitching */
-      content: ""; position: absolute; inset: 7px; pointer-events: none;
-      clip-path: polygon(24% 0, 76% 0, 100% 8%, 100% 100%, 0 100%, 0 8%);
-      border: 1px dashed rgba(227, 169, 128, 0.45); border-radius: 0 0 5px 5px;
-    }
-    .tag-body::before { /* chrome eyelet */
-      content: ""; position: absolute; top: 14px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%;
-      background: var(--bg); box-shadow: 0 0 0 4px #c9cbd0, 0 0 0 5px #6d7076, 0 2px 4px 5px rgba(0, 0, 0, 0.5);
-    }
-    .tag-photo {
-      aspect-ratio: 4 / 3; border-radius: 3px; display: grid; place-items: center; text-align: center; position: relative;
-      background: radial-gradient(70% 60% at 50% 70%, rgba(255, 255, 255, 0.06), transparent), #0e0e10;
-      color: var(--muted); font-size: 13px; box-shadow: inset 0 0 0 1px var(--hair);
-    }
-    .tag-photo .sample {
-      position: absolute; top: 12px; right: 12px; transform: rotate(6deg);
-      padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--accent-hi);
-      box-shadow: inset 0 0 0 1px var(--accent); background: rgba(9, 9, 10, 0.6);
-    }
-    .tag h3 { margin: 18px 0 2px; font-size: 21px; font-weight: 400; }
-    .tag .meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #b3a79b; }
-    .tag .meta code { font-family: var(--font-latin); font-size: 9px; letter-spacing: 0.25em; direction: ltr; }
+    .tag-body::after { content: ""; position: absolute; inset: 6px; pointer-events: none; clip-path: polygon(24% 0, 76% 0, 100% 8%, 100% 100%, 0 100%, 0 8%); border: 1px solid var(--hair-gold); border-radius: 0 0 14px 14px; }
+    .tag-body::before { content: ""; position: absolute; top: 14px; left: 50%; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: var(--cream); box-shadow: 0 0 0 4px var(--gold), 0 0 0 5px var(--gold-lo); }
+    .tag-photo { aspect-ratio: 4 / 3; border-radius: 12px; display: grid; place-items: center; text-align: center; position: relative; background: var(--sand); color: var(--muted); font-size: 13px; }
+    .tag-photo .sample { position: absolute; top: 10px; right: 10px; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--chocolate); background: rgba(247, 241, 231, 0.9); box-shadow: inset 0 0 0 1px var(--gold); }
+    .tag h3 { margin: 16px 4px 2px; font-size: 20px; font-weight: 800; }
+    .tag .meta { margin: 0 4px; font-size: 13px; color: var(--muted); }
 
-    /* ---- shipment tracker: hairline route, lit stations ---- */
-    .tracker { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; padding-top: 6px; }
-    .tracker::before, .tracker::after { content: ""; position: absolute; top: 12px; height: 1px; }
-    .tracker::before { right: 8.33%; left: 8.33%; background: var(--hair-strong); }
-    .tracker::after { right: 8.33%; width: calc(83.33% * 0.6); background: linear-gradient(to left, var(--accent-lo), var(--accent-hi)); box-shadow: 0 0 12px var(--accent-glow); }
-    .step { position: relative; display: grid; justify-items: center; gap: 14px; font-size: 13px; color: var(--muted); text-align: center; }
-    .step i { width: 13px; height: 13px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair-strong); position: relative; z-index: 1; }
-    .step.done { color: var(--platinum); }
-    .step.done i { background: var(--accent); box-shadow: 0 0 0 4px var(--bg); }
-    .step.now { color: var(--accent-hi); }
-    .step.now i { background: var(--accent-hi); box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent), 0 0 18px 4px var(--accent-glow); }
-    .tracker-mobile { margin-top: 30px; height: 2px; background: var(--hair); position: relative; }
-    .tracker-mobile span { position: absolute; inset: 0 0 0 auto; width: 60%; background: linear-gradient(to left, var(--accent-lo), var(--accent-hi)); }
+    /* ---- tracker: steps from the brand's own sentence ---- */
+    .tracker { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; padding-top: 6px; }
+    .tracker::before, .tracker::after { content: ""; position: absolute; top: 12px; height: 2px; border-radius: 1px; }
+    .tracker::before { right: 10%; left: 10%; background: var(--sand); }
+    .tracker::after { right: 10%; width: calc(80% * 0.5); background: linear-gradient(to left, var(--gold-lo), var(--gold)); }
+    .step { position: relative; display: grid; justify-items: center; gap: 12px; font-size: 14px; color: var(--muted); text-align: center; }
+    .step i { width: 14px; height: 14px; border-radius: 50%; background: var(--cream); box-shadow: inset 0 0 0 2px #d6c9b6; position: relative; z-index: 1; }
+    .step.done { color: var(--espresso); }
+    .step.done i { background: var(--gold); box-shadow: 0 0 0 4px var(--cream); }
+    .step.now { color: var(--bronze); font-weight: 700; }
+    .step.now i { background: var(--chocolate); box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--gold); }
+    .tracker-mobile { margin-top: 30px; height: 3px; border-radius: 2px; background: var(--sand); position: relative; overflow: hidden; }
+    .tracker-mobile span { position: absolute; inset: 0 0 0 auto; width: 60%; background: linear-gradient(to left, var(--gold-lo), var(--gold)); }
 
-    /* ---- customs seal scroll indicator ---- */
-    .stamp-stage { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+    /* ---- gold seal scroll indicator ---- */
+    .stamp-stage { display: flex; gap: 44px; align-items: center; flex-wrap: wrap; }
     .stamp {
       position: relative; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
-      font-family: var(--font-latin); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; direction: ltr; color: var(--accent-hi);
-      box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 0 5px var(--bg), inset 0 0 0 6px rgba(200, 135, 90, 0.45);
+      font-family: var(--font-latin); font-weight: 500; font-size: 13px; letter-spacing: 0.12em; direction: ltr; color: var(--bronze);
+      box-shadow: inset 0 0 0 1.5px var(--gold), inset 0 0 0 5px var(--cream), inset 0 0 0 6px rgba(189, 153, 106, 0.55);
       transform: rotate(-12deg);
     }
     .stamp svg { position: absolute; bottom: 8px; width: 11px; height: 11px; }
@@ -232,74 +203,68 @@
     @keyframes strike { 0%, 30% { transform: rotate(-4deg) scale(1.5); opacity: 0; } 42% { transform: rotate(-12deg) scale(0.94); opacity: 1; } 50%, 100% { transform: rotate(-12deg) scale(1); opacity: 1; } }
     .stamp-caption { font-size: 13px; color: var(--muted); max-width: 30ch; }
 
-    /* ---- end: perforated ticket edge instead of a rough tear ---- */
-    .stub { position: relative; margin-top: 8px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, var(--lacquer-hi), var(--lacquer)); box-shadow: inset 0 0 0 1px var(--hair); }
-    .stub-perf { height: 14px; background: radial-gradient(circle at 7px 0, var(--bg) 4.5px, transparent 5px) 0 0 / 14px 14px repeat-x; }
-    .stub-body { padding: clamp(28px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
-    .stub-body b { font-weight: 200; font-size: clamp(30px, 4.4vw, 56px); }
+    /* ---- end band: chocolate like their graphics' footer, soft perforated top edge ---- */
+    .band { position: relative; border-radius: var(--r-surface); overflow: hidden; background: linear-gradient(180deg, #4a2a14, var(--chocolate)); color: var(--cream); }
+    .band-perf { height: 14px; background: radial-gradient(circle at 7px 0, var(--cream) 4.5px, transparent 5px) 0 0 / 14px 14px repeat-x; }
+    .band-body { padding: clamp(28px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between; }
+    .band-body b { font-weight: 800; font-size: clamp(28px, 3.8vw, 48px); }
+    .band-body p { margin: 6px 0 0; color: #e3d5c1; font-weight: 300; }
+    .band-sign { border-top: 1px solid rgba(220, 195, 154, 0.25); padding: 14px clamp(28px, 4vw, 48px); font-size: 14px; color: var(--gold-hi); display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    .band-sign span[dir="ltr"] { font-family: var(--font-latin); letter-spacing: 0.06em; }
 
-    .form-demo { display: grid; gap: 18px; max-width: 520px; margin-top: 56px; }
-    .form-demo label { display: grid; gap: 8px; font-size: 13px; color: #a9abb0; }
-    .form-demo input {
-      font: inherit; font-size: 16px; font-weight: 400; color: var(--platinum); background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong);
-      padding: 12px 2px; border-radius: 0; transition: border-color 0.4s var(--spring);
-    }
-    .form-demo input::placeholder { color: rgba(220, 221, 224, 0.42); }
-    .form-demo input:focus { outline: none; border-bottom-color: var(--accent-hi); }
+    .pending-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .pending-item { padding: 18px 20px; border-radius: var(--r-surface); border: 1.5px dashed var(--hair-gold); background: rgba(251, 248, 242, 0.6); display: grid; gap: 8px; }
+    .pending-item b { font-weight: 700; }
+    .pending-item p { margin: 0; font-size: 14px; color: var(--muted); }
 
     @media (max-width: 768px) {
-      .hero-door.l { transform: translateX(-4%); }
-      .hero-door.r { transform: translateX(4%); }
-      .hero-seam { width: 10%; }
-      .hero-title { font-size: clamp(54px, 17vw, 84px); }
+      .hero-door.l { transform: translateX(-22%); }
+      .hero-door.r { transform: translateX(22%); }
+      .hero-title { font-size: clamp(54px, 16vw, 80px); }
       .hero-cta .btn { flex: 1 1 100%; justify-content: space-between; }
-      .brand-word { display: none; }
+      .hero-cta .btn.ghost-light { justify-content: center; }
+      .site-header nav { display: none; }
       .tracker { display: none; }
       .fields { grid-template-columns: 1fr; }
       .tags { grid-template-columns: minmax(0, 320px); justify-content: center; }
       .tabs { display: flex; width: 100%; }
-      .tabs button { flex: 1; padding: 10px 6px; font-size: 14px; }
-      .seal { width: 64px; height: 64px; font-size: 12px; bottom: 54px; }
+      .tabs button { flex: 1; padding: 10px 4px; font-size: 13px; }
+      .seal { width: 62px; height: 62px; font-size: 14px; bottom: 46px; }
     }
     @media (min-width: 769px) { .tracker-mobile { display: none; } }
     @media (prefers-reduced-motion: reduce) { .stamp { animation: none !important; } }
   </style>
-  <script>
-    // Sample page only: preview the accent options.
-    const a = new URLSearchParams(location.search).get("accent");
-    if (a) document.documentElement.dataset.accent = a;
-  </script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#"><span class="brand-mark">RC</span><span class="brand-word">RADCARSELL</span></a>
-    <nav><a href="#">موجودی</a><a href="#">مراحل کار</a><a href="#">انواع پلاک</a></nav>
-    <a class="btn ghost" href="#" style="min-height:40px;padding:6px 18px;font-size:13px">استعلام خودرو</a>
+    <a class="brand" href="#"><span class="brand-word">RADCARSELL</span><span class="brand-sub">PREMIUM CAR IMPORT</span></a>
+    <nav><a href="#">خدمات</a><a href="#">موجودی خودرو</a><a href="#">نکات مهم</a></nav>
+    <a class="btn ghost-light" href="#" style="min-height:40px;padding:6px 18px;font-size:13px">استعلام خودرو</a>
   </header>
 
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"><div class="hero-door l"></div><div class="hero-door r"></div><div class="hero-seam"></div></div>
+    <div class="hero-bg" aria-hidden="true"><div class="hero-door l"></div><div class="hero-door r"></div></div>
     <div class="wrap hero-copy">
-      <p class="hero-kicker">ANZALI FREE ZONE</p>
       <h1 class="hero-title">از بندر<br><b>تا پلاک</b></h1>
-      <p class="hero-sub">واردات و ترخیص خودروی پلاک منطقه آزاد انزلی، تا روزی که سوئیچ در دست شماست.</p>
+      <p class="hero-sub">از انتخاب تا تحویل، در کنار شما هستیم.</p>
       <div class="hero-cta">
         <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
-        <a class="btn ghost" href="#">موجودی خودرو</a>
+        <a class="btn ghost-light" href="#">موجودی خودرو</a>
       </div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2 class="block-title">رنگ‌ها</h2>
-      <p class="note">مشکی پیانویی، پلاتین و کروم، و فقط یک رنگ فلزی گرم برای اکسنت. اکسنت بعد از دیدن رنگ‌های لوگوی RC قطعی می‌شود. در همین صفحه سه گزینه قابل مقایسه است.</p>
+      <h2 class="block-title">رنگ‌های خود برند</h2>
+      <p class="note">نمونه‌برداری مستقیم از گرافیک‌های اینستاگرام خودشان (<span class="latin">brand/images</span>): کرم روشن، قهوه‌ای خیلی تیره و طلایی و برنزی. طلایی روی کرم برای متن کم‌رنگ است؛ متن رنگی روی کرم با برنزی نوشته می‌شود و طلایی برای خط، مهر، دکمه و متن روی زمینه تیره می‌ماند.</p>
       <div class="swatches">
-        <div class="sw"><div class="sw-chip" style="background:#09090a;box-shadow:inset 0 0 0 1px rgba(220,221,224,.14)"></div><div class="m"><b>مشکی پیانویی</b><code>#09090A</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#1b1b1e,#121214)"></div><div class="m"><b>لاک براق</b><code>#121214</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#f4f5f7,#d4d6da 48%,#b3b6bc 52%,#d9dbdf)"></div><div class="m"><b>پلاتین و کروم</b><code>#DCDDE0</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,var(--accent-hi),var(--accent) 50%,var(--accent-lo))"></div><div class="m"><b>اکسنت</b><code>ACCENT</code></div></div>
-        <div class="sw"><div class="sw-chip" style="background:linear-gradient(180deg,#3a2519,#2a1a12)"></div><div class="m"><b>چرم کنیاکی</b><code>#2A1A12</code></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#f7f1e7;box-shadow:inset 0 0 0 1px rgba(39,28,19,.1)"></div><div class="m"><b>کرم</b><code>#F7F1E7</code><small>زمینه صفحه</small></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#eae1d5"></div><div class="m"><b>شنی</b><code>#EAE1D5</code><small>زمینه دوم</small></div></div>
+        <div class="sw"><div class="sw-chip" style="background:linear-gradient(145deg,#e8d3ad,#bd996a 55%,#a8845a)"></div><div class="m"><b>طلایی</b><code>#BD996A</code><small>لوگو، دکمه، مهر</small></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#8b623f"></div><div class="m"><b>برنزی</b><code>#8B623F</code><small>متن رنگی روی کرم</small></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#41230f"></div><div class="m"><b>شکلاتی</b><code>#41230F</code><small>نوار پایین، بخش پایانی</small></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#271c13"></div><div class="m"><b>قهوه‌ای خیلی تیره</b><code>#271C13</code><small>متن</small></div></div>
       </div>
     </div>
   </section>
@@ -307,65 +272,79 @@
   <section class="block">
     <div class="wrap type-grid">
       <h2 class="block-title">فونت‌ها</h2>
-      <div class="spec"><small>VAZIRMATN 200 + 600</small><p class="t-display">انزلی<br><b>منطقه آزاد</b></p></div>
-      <div class="spec"><small>VAZIRMATN 300</small><p class="t-h2">ترخیص، بدون سردرگمی</p></div>
-      <div class="spec"><small>SYNCOPATE 400 · CHROME</small><p class="t-latin">RADCARSELL</p></div>
-      <div class="spec"><small>VAZIRMATN 300 · BODY</small><p class="t-body">خودروی پلاک منطقه آزاد را از بندر انزلی تا دست شما همراهی می‌کنیم: خرید، واردات، ترخیص و پلاک، هر مرحله روشن و قابل پیگیری.</p></div>
-      <div class="spec"><small>SYNCOPATE · LABELS AND CODES</small><p class="t-small">0911 984 2354 &nbsp; / &nbsp; ANZALI FREE ZONE</p></div>
+      <div class="spec"><small>VAZIRMATN 300 + 800</small><p class="t-display">خودروی دلخواهت رو<br><b>پیدا می‌کنیم</b></p></div>
+      <div class="spec"><small>VAZIRMATN 800</small><p class="t-h2">خرید خودرو با اطمینان</p></div>
+      <div class="spec"><small>VAZIRMATN 400 · BODY</small><p class="t-body">از مشاوره تا خرید و واردات خودروی موردنظر شما</p></div>
+      <div class="spec"><small>JOST 300 · WORDMARK</small><p class="t-latin">RADCARSELL</p><p class="t-latin-sub">PREMIUM CAR IMPORT</p></div>
+      <div class="spec"><small>JOST · NUMBERS</small><p class="t-num">0911 984 2354</p></div>
+      <div class="spec"><small>LOGO</small><div><span class="pending">در انتظار اطلاعات: فایل اصلی لوگوی R طلایی و مونوگرام RC</span></div></div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
       <h2 class="block-title">دکمه‌ها و تب‌ها</h2>
-      <p class="note">دکمه اصلی کرومی با لبه روشن و برق عبوری در hover؛ آیکون در دایره مشکی با رنگ اکسنت.</p>
+      <p class="note">دکمه اصلی طلایی با لبه روشن و برق عبوری در hover، آیکون در دایره قهوه‌ای. دکمه دوم شکلاتی. تب‌ها قرصی.</p>
       <div class="row">
         <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
-        <a class="btn ghost" href="#">موجودی خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
-        <div class="tabs" role="tablist"><button role="tab" aria-selected="true">پلاک گذر</button><button role="tab" aria-selected="false">منطقه آزاد</button><button role="tab" aria-selected="false">دائم</button></div>
+        <a class="btn dark" href="#">موجودی خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        <div class="tabs" role="tablist"><button role="tab" aria-selected="true">خرید خودرو</button><button role="tab" aria-selected="false">آماده فروش</button><button role="tab" aria-selected="false">واردات</button></div>
       </div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2 class="block-title">قاب دوقابه: بارنامه</h2>
-      <p class="note">لبه فلزی براشد، سینی تیره و صفحه لاکی. بارنامه به‌جای کاغذ کرم، یک سند مشکی با خطوط مویی و مهر فویل برجسته است.</p>
-      <div class="shell" style="max-width:580px"><div class="shell-inner">
-        <div class="manifest">
-          <div class="manifest-head"><b>استعلام خودرو</b><span>BILL OF LADING</span></div>
-          <dl class="fields">
-            <div><dt>مدل دلخواه</dt><dd>مرسدس‌بنز E300</dd></div>
-            <div><dt>سال</dt><dd>نمونه</dd></div>
-            <div><dt>نوع پلاک</dt><dd>منطقه آزاد</dd></div>
-            <div><dt>شهر</dt><dd>رشت</dd></div>
-          </dl>
-          <div class="barcode" aria-hidden="true"></div>
-          <span class="seal" aria-hidden="true">RC</span>
-        </div>
+      <h2 class="block-title">کارت خدمت، با متن خودشان</h2>
+      <p class="note">متن عیناً از اسلاید ۲ هایلایت «خرید خودرو». بخش خدمات صفحه همین ۶ اسلاید را دنبال می‌کند.</p>
+      <div class="shell service"><div class="plate">
+        <h3>خودروی دلخواهت رو <span>پیدا می‌کنیم</span></h3>
+        <p>مهم نیست چه خودرویی مدنظرت باشه… بر اساس بودجه، سلیقه و نیاز شما</p>
+        <ul class="checks"><li>جستجو و بررسی بازار</li><li>کارشناسی و استعلام</li><li>مذاکره و خرید</li><li>تحویل خودرو با اطمینان</li></ul>
+        <p class="tagline">از اقتصادی تا لوکس، خرید سفارشی با رادکارسل</p>
       </div></div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <h2 class="block-title">کارت موجودی: برچسب چرمی</h2>
-      <p class="note">برچسب حمل از چرم کنیاکی تیره با دوخت، پرچ کرومی و بند. عکس واقعی از هایلایت «موجودی خودرو» می‌آید. قیمت نمی‌آید.</p>
+      <h2 class="block-title">قاب دوقابه: فرم استعلام</h2>
+      <p class="note">بارنامه نرم و لوکس: سینی با لبه طلایی، صفحه عاجی، خط بارکد کم‌رنگ و مهر فویل طلایی. پیام فرم به واتساپ ۰۹۱۱۹۸۴۲۳۵۴ می‌رود.</p>
+      <div class="shell" style="max-width:600px"><div class="plate">
+        <div class="plate-head"><b>استعلام خودرو</b><span>RADCARSELL</span></div>
+        <div class="fields">
+          <label>مدل دلخواه<input placeholder="مثلاً لکسوس GX460"></label>
+          <label>سال<input placeholder="سال ساخت" inputmode="numeric"></label>
+          <label>بودجه (اختیاری)<input placeholder="بودجه تقریبی"></label>
+          <label>نوع پلاک<input placeholder="در انتظار اطلاعات"></label>
+          <label>شهر<input placeholder="شهر خود را وارد کنید"></label>
+          <label>شماره همراه<input placeholder="شماره خود را وارد کنید" dir="ltr" style="text-align:right"></label>
+        </div>
+        <div class="barcode" aria-hidden="true"></div>
+        <span class="seal" aria-hidden="true">RC</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2 class="block-title">کارت موجودی: برچسب حمل</h2>
+      <p class="note">نام خودروها از هایلایت «موجودی خودرو». قیمت‌ها قدیمی‌اند و نمی‌آیند. عکس واقعی فقط با اجازه شما جای کادر شنی می‌نشیند.</p>
       <div class="tags">
         <article class="tag">
           <svg class="tag-cord" viewBox="0 0 64 50" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 0 C 14 24, 26 38, 32 50 M56 0 C 50 24, 38 38, 32 50"/></svg>
           <div class="tag-body">
-            <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
-            <h3>مرسدس‌بنز C300</h3>
-            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC 01</code></div>
+            <div class="tag-photo">عکس: در انتظار اجازه<span class="sample">نمونه</span></div>
+            <h3>لکسوس GX460 مدل ۲۰۱۸</h3>
+            <p class="meta">نمونه از موجودی‌های قبلی</p>
           </div>
         </article>
         <article class="tag">
           <svg class="tag-cord" viewBox="0 0 64 50" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 0 C 14 24, 26 38, 32 50 M56 0 C 50 24, 38 38, 32 50"/></svg>
           <div class="tag-body">
-            <div class="tag-photo">جای عکس از پیج<span class="sample">نمونه</span></div>
-            <h3>تویوتا لندکروزر</h3>
-            <div class="meta"><span>پلاک منطقه آزاد</span><code>RC 02</code></div>
+            <div class="tag-photo">عکس: در انتظار اجازه<span class="sample">نمونه</span></div>
+            <h3>مرسدس C300 مدل ۲۰۱۶</h3>
+            <p class="meta">نمونه از موجودی‌های قبلی</p>
           </div>
         </article>
       </div>
@@ -374,14 +353,13 @@
 
   <section class="block">
     <div class="wrap">
-      <h2 class="block-title">ردیاب محموله</h2>
-      <p class="note">یک خط مویی با ایستگاه‌هایی که با اسکرول روشن می‌شوند. فقط اسم مرحله. دسکتاپ پایین صفحه، موبایل یک نوار نازک بالا.</p>
+      <h2 class="block-title">ردیاب مسیر</h2>
+      <p class="note">مراحل از جمله خودشان: «از مشاوره برای خرید گرفته، تا خرید و کارشناسی و ترخیص و تحویل خودرو توسط تیم ما انجام می‌گیره.» بدون زمان یا ادعا.</p>
       <div class="tracker" aria-hidden="true">
+        <div class="step done"><i></i>مشاوره</div>
         <div class="step done"><i></i>خرید</div>
-        <div class="step done"><i></i>حمل</div>
-        <div class="step done"><i></i>ورود به منطقه آزاد</div>
-        <div class="step now"><i></i>ترخیص</div>
-        <div class="step"><i></i>پلاک</div>
+        <div class="step now"><i></i>کارشناسی</div>
+        <div class="step"><i></i>ترخیص</div>
         <div class="step"><i></i>تحویل</div>
       </div>
       <div class="tracker-mobile" aria-hidden="true"><span></span></div>
@@ -390,7 +368,7 @@
 
   <section class="block">
     <div class="wrap">
-      <h2 class="block-title">نشانگر اسکرول: مهر</h2>
+      <h2 class="block-title">نشانگر اسکرول: مهر طلایی</h2>
       <div class="stamp-stage">
         <div class="stamp hover" aria-hidden="true">RC<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         <p class="stamp-caption">قبل از اسکرول: معلق، آرام بالا و پایین.</p>
@@ -403,14 +381,29 @@
   <section class="block">
     <div class="wrap">
       <h2 class="block-title">پایان صفحه</h2>
-      <p class="note">به‌جای پارگی زبر کاغذ، لبه سوراخ‌دار مثل ته‌برگ یک بلیت یا سند رسمی.</p>
-      <div class="stub">
-        <div class="stub-perf" aria-hidden="true"></div>
-        <div class="stub-body"><b>خودروی بعدی شما؟</b><a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a></div>
+      <p class="note">نوار شکلاتی مثل پایین گرافیک‌های خودشان، با لبه سوراخ‌دار نرم. متن از اسلاید ۶ «خرید خودرو».</p>
+      <div class="band">
+        <div class="band-perf" aria-hidden="true"></div>
+        <div class="band-body">
+          <div><b>دنبال خرید خودرو هستی؟</b><p>برای مشاوره رایگان و بررسی گزینه‌های مناسب بودجه‌ات با ما در ارتباط باش.</p></div>
+          <a class="btn" href="#">استعلام خودرو <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span></a>
+        </div>
+        <div class="band-sign"><span>تماس / واتساپ</span><span dir="ltr">0911 984 2354</span><span dir="ltr">@radcarsell_</span><span>گیلان، رشت، بازدید با هماهنگی قبلی</span></div>
       </div>
-      <div class="form-demo">
-        <label>مدل دلخواه<input placeholder="مثلاً مرسدس‌بنز E300"></label>
-        <label>شماره همراه<input placeholder="شماره خود را وارد کنید" dir="ltr" style="text-align:right"></label>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2 class="block-title">در انتظار اطلاعات</h2>
+      <p class="note">این‌ها در <span class="latin">brand/facts.md</span> نیست. در صفحه خالی می‌مانند تا شما بگویید.</p>
+      <div class="pending-list">
+        <div class="pending-item"><span class="pending">در انتظار اطلاعات</span><b>فایل لوگو</b><p>نسخه باکیفیت R طلایی و مونوگرام RC. فعلاً فقط نوشته RADCARSELL.</p></div>
+        <div class="pending-item"><span class="pending">در انتظار اطلاعات</span><b>انواع پلاک</b><p>فرق پلاک گذر، دائم منطقه آزاد و ملی، و محدوده تردد، با تاریخ.</p></div>
+        <div class="pending-item"><span class="pending">در انتظار اطلاعات</span><b>نام ثبتی شرکت و مجوز</b><p>ادعای «مجوز رسمی» تا آن موقع نوشته نمی‌شود.</p></div>
+        <div class="pending-item"><span class="pending">در انتظار اطلاعات</span><b>ساعت کاری</b><p>فقط «بازدید با هماهنگی قبلی» معلوم است.</p></div>
+        <div class="pending-item"><span class="pending">در انتظار اطلاعات</span><b>موجودی فعلی</b><p>فهرست هایلایت مال اوایل تابستان ۱۴۰۵ است.</p></div>
+        <div class="pending-item"><span class="pending">در انتظار اجازه</span><b>عکس‌ها، نام و چهره</b><p>استفاده از عکس‌های پیج، نام «وحید راد» و چهره در صفحه.</p></div>
       </div>
     </div>
   </section>

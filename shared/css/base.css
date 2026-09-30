@@ -1,0 +1,188 @@
+/* Shared mechanics for every landing. Brand identity lives in each page's style.css. */
+
+@font-face { font-family: "Vazirmatn"; src: url("../fonts/Vazirmatn-wght.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Markazi"; src: url("../fonts/markazi-text-arabic-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Markazi"; src: url("../fonts/markazi-text-latin-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Reem Kufi"; src: url("../fonts/reem-kufi-arabic-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Reem Kufi"; src: url("../fonts/reem-kufi-latin-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Lalezar"; src: url("../fonts/lalezar-arabic-400-normal.woff2") format("woff2"); font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Lalezar"; src: url("../fonts/lalezar-latin-400-normal.woff2") format("woff2"); font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Changa"; src: url("../fonts/changa-arabic-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Changa"; src: url("../fonts/changa-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Space Mono"; src: url("../fonts/SpaceMono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("../fonts/SpaceMono-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --bg: #0b0b0c;
+  --ink: #f2efe9;
+  --muted: #a8a39a;
+  --accent: #c8a45c;
+  --dim-color: #050505;
+  --font-display: "Vazirmatn", system-ui, sans-serif;
+  --font-body: "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --gutter: clamp(16px, 5vw, 88px);
+  --header-h: 72px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+img, canvas, video { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.num { font-feature-settings: "tnum"; }
+
+/* ---- loader ---- */
+#loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-content: center; gap: 22px; justify-items: center;
+  background: var(--loader-bg, var(--bg));
+  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+}
+#loader.is-done { opacity: 0; visibility: hidden; }
+.loader-brand { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.02em; }
+.loader-track { width: min(260px, 60vw); height: 1px; background: color-mix(in srgb, var(--ink) 18%, transparent); overflow: hidden; }
+.loader-bar { height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.25s linear; }
+.loader-percent { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.2em; }
+
+/* ---- header ---- */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 0 var(--gutter);
+}
+.site-header nav { display: flex; gap: clamp(14px, 2.4vw, 34px); font-size: 14px; }
+.site-header nav a { text-decoration: none; opacity: 0.78; transition: opacity 0.2s; }
+.site-header nav a:hover { opacity: 1; }
+
+/* ---- cinematic layers ---- */
+.canvas-wrap { position: fixed; inset: 0; z-index: 1; clip-path: circle(0% at 50% 62%); will-change: clip-path; }
+.canvas-wrap canvas { width: 100%; height: 100%; }
+#dim { position: fixed; inset: 0; z-index: 2; background: var(--dim-color); opacity: 0; pointer-events: none; }
+
+.marquee { position: fixed; inset: auto 0 7vh 0; z-index: 3; overflow: hidden; opacity: 0; pointer-events: none; }
+.marquee-text {
+  display: inline-block; white-space: nowrap;
+  font-family: var(--font-display); font-size: clamp(64px, 13vw, 240px); line-height: 1;
+  color: var(--marquee-color, color-mix(in srgb, var(--ink) 14%, transparent));
+  will-change: transform;
+}
+
+.stage { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+.scene {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  padding: calc(var(--header-h) + 24px) var(--gutter) 64px;
+  opacity: 0; visibility: hidden;
+  isolation: isolate;
+}
+/* Scrim on the text side keeps copy legible over any frame. */
+.scene.align-start::before, .scene.align-end::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(to left, color-mix(in srgb, var(--bg) 86%, transparent), color-mix(in srgb, var(--bg) 50%, transparent) 40%, transparent 68%);
+}
+.scene.align-end::before { transform: scaleX(-1); }
+.scene.is-active .scene-inner { pointer-events: auto; }
+.scene.align-start { justify-content: flex-start; }
+.scene.align-end { justify-content: flex-end; }
+.scene.align-center { justify-content: center; text-align: center; }
+.scene.align-bottom { align-items: flex-end; }
+.scene-inner { max-width: min(40vw, 620px); }
+.scene.align-center .scene-inner { max-width: min(1100px, 100%); }
+
+#scroll-container { position: relative; z-index: 0; height: 900vh; }
+
+.progress { position: fixed; inset: auto 0 0 0; z-index: 60; height: 2px; pointer-events: none; }
+.progress span { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: right; }
+.scene-index {
+  position: fixed; z-index: 60; inset: auto var(--gutter) 22px auto;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; color: var(--muted);
+}
+
+/* Content after the cinematic part covers the fixed canvas. */
+.after { position: relative; z-index: 10; background: var(--bg); }
+
+/* ---- type helpers ---- */
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 18px; }
+.display { font-family: var(--font-display); font-weight: 700; line-height: 1.05; margin: 0; }
+.lead { font-size: clamp(16px, 1.3vw, 19px); color: var(--muted); margin: 18px 0 0; max-width: 46ch; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px;
+  background: var(--accent); color: var(--bg);
+  text-decoration: none; font-weight: 600; font-size: 15px; border: 0; cursor: pointer;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 35%, transparent); }
+
+.concept-note {
+  font-size: 12px; color: var(--muted); text-align: center;
+  padding: 18px var(--gutter) 28px; margin: 0;
+}
+
+/* ---- mobile ---- */
+@media (max-width: 768px) {
+  :root { --header-h: 60px; }
+  body { font-size: 16px; }
+  .site-header nav { display: none; }
+  .scene, .scene.align-start, .scene.align-end { justify-content: center; align-items: flex-end; padding: 0 20px 72px; }
+  /* Listed with the align-* variants so this beats the desktop side scrim's specificity. */
+  .scene::before, .scene.align-start::before, .scene.align-end::before {
+    content: ""; position: absolute; inset: 12% 0 0 0; z-index: -1; transform: none;
+    background: linear-gradient(to top, color-mix(in srgb, var(--bg) 94%, transparent) 48%, transparent);
+  }
+  .scene.align-center { align-items: center; padding-bottom: 20px; }
+  .scene.align-center::before { inset: 0; background: none; }
+  .scene-inner { max-width: 100%; }
+  .scene-index { display: none; }
+}
+
+/* ---- reduced motion: a normal document ---- */
+.is-static .canvas-wrap { position: relative; height: 70vh; clip-path: none; }
+.is-static #dim, .is-static .marquee, .is-static .progress, .is-static .scene-index { display: none; }
+.is-static .stage { position: static; }
+.is-static .scene { position: relative; opacity: 1; visibility: visible; min-height: 60vh; }
+.is-static .scene::before { display: none; }
+.is-static .scene-inner { pointer-events: auto; }
+.is-static #scroll-container { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ---- before/after compare ---- */
+.compare { position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 16 / 9; --pos: 50%; user-select: none; }
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.compare-before { clip-path: inset(0 0 0 var(--pos)); }
+.compare::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px;
+  background: var(--accent); pointer-events: none;
+}
+.compare-range {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize;
+  direction: ltr;
+}
+.compare-label {
+  position: absolute; bottom: 14px; z-index: 1; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink); pointer-events: none;
+}
+.compare-label.before { right: 14px; }
+.compare-label.after { left: 14px; }
+.compare:has(.compare-range:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }

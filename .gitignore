@@ -1,0 +1,4 @@
+# Python cache from tools/cover.py
+__pycache__/
+# Scratch output from frame checks
+source/check/

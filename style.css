@@ -112,7 +112,7 @@ body { font-weight: 300; }
 .hero-sub { margin: 20px 0 0; font-size: clamp(17px, 1.4vw, 21px); color: var(--ink-soft); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .hero .scene-inner { max-width: min(62vw, 900px); }
-.scene.align-start:not(.hero) .scene-inner { max-width: min(32vw, 520px); }
+@media (min-width: 769px) { .scene.align-start:not(.hero) .scene-inner { max-width: min(32vw, 520px); } }
 
 /* Scroll cue: a champagne seal that hovers, then strikes once when scrolling starts. */
 .stamp {

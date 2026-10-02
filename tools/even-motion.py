@@ -8,8 +8,9 @@ tools/extract-frames.sh can take with --desktop-count / --mobile-count = the fra
 count printed at the end.
 
 Usage:
-  python3 tools/even-motion.py --video source/desktop.mp4 --out work/desktop-even.mp4 \
-    --count 140 [--floor 0.35] [--vf "colorbalance=...,vignette=PI/5"]
+  python3 tools/even-motion.py --video source/desktop.mp4 --out work/desktop-even.mkv \
+    --count 140 [--floor 0.35] [--vf "scale=...:flags=lanczos,cas=0.35,colorbalance=...,vignette=PI/5"]
+A .mkv --out writes a lossless FFV1 master; other extensions write H.264 at CRF 10.
 
 Needs ffmpeg/ffprobe, numpy.
 """
@@ -50,8 +51,10 @@ picks = np.unique(picks)
 select = "+".join(f"eq(n\\,{i})" for i in picks)
 # setpts renumbers the picked frames so the output plays them one per tick, none duplicated.
 vf = f"select='{select}',setpts=N/({fps:g}*TB)" + (f",{args.vf}" if args.vf else "")
+# A .mkv output is a lossless FFV1 master; anything else is near-lossless H.264.
+codec = ["-c:v", "ffv1", "-level", "3"] if args.out.endswith(".mkv") else ["-c:v", "libx264", "-crf", "10", "-preset", "slow", "-pix_fmt", "yuv420p"]
 subprocess.check_call([
-    "ffmpeg", "-v", "error", "-y", "-i", args.video, "-vf", vf, "-an", "-c:v", "libx264", "-crf", "10", "-preset", "slow", "-pix_fmt", "yuv420p", "-r", f"{fps:g}", args.out])
+    "ffmpeg", "-v", "error", "-y", "-i", args.video, "-vf", vf, "-an", *codec, "-r", f"{fps:g}", args.out])
 
 share = np.diff(cum[picks]) / cum[-1]
 print(f"{args.video}: {n} frames -> {len(picks)} frames ({args.out})", file=sys.stderr)
